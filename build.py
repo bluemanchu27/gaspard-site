@@ -179,6 +179,26 @@ def paragraphs(text):
 
 
 # ---------------------------------------------------------------- pages
+
+def sign_svg():
+    """Animated sign over the office sketch: frame and lettering draw in, fill, then glow."""
+    logo = open(os.path.join(STATIC, "img", "logo.svg"), encoding="utf-8").read()
+    paths = re.findall(r'<path[^>]*fill="([^"]+)"[^>]*d="([^"]+)"', logo)
+    navy, red = [], []
+    for i, (fill, d) in enumerate(paths):
+        cls = "r" if fill.startswith("rgb(67") else "n"
+        el = f'<path class="ln {cls}" pathLength="1" style="--i:{i}" d="{d}"/>'
+        (red if cls == "r" else navy).append(el)
+    outer = "M409 146 L619 168.5 L619 274.5 L408 256.5 Z"
+    inner = "M418.75 150 L616.25 171.25 L616.25 268.75 L417.5 252.5 Z"
+    return ('<svg class="sign" viewBox="0 0 949 924" aria-hidden="true" focusable="false">'
+            '<defs><filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="13"/></filter></defs>'
+            f'<path class="halo" d="{outer}" filter="url(#glow)"/>'
+            f'<path class="face" d="{inner}"/>'
+            f'<path class="frame f1" pathLength="1" d="{outer}"/><path class="frame f2" pathLength="1" d="{inner}"/>'
+            '<g transform="matrix(0.45 0.04275 -0.0055 0.45 437.26 152.1)">' + "".join(navy) + "".join(red) + '</g></svg>')
+
+
 def faq_html():
     groups = [g for g in FAQ.get("groups", []) if g.get("items")]
     if not groups:
@@ -205,7 +225,9 @@ def home():
     s = head(COMPANY, f"{COMPANY}, a real estate company with local roots going back to 1979.")
     s += header("home")
     s += ('<main><div class="wrap"><section class="hero">'
-          f'<img class="sketch" src="{img("/img/office-sketch.jpg")}" alt="Drawing of the {COMPANY} office on Jones Creek Road" width="948" height="925">'
+          '<div class="sketch-wrap"><script>try{if(sessionStorage.getItem("signSeen"))document.documentElement.classList.add("sign-seen");else sessionStorage.setItem("signSeen","1")}catch(e){}</script>'
+          f'<img class="sketch" src="{img("/img/office-sketch-blank.jpg")}" alt="Drawing of the {COMPANY} office on Jones Creek Road, with the Gaspard &amp; Co Real Estate sign" width="949" height="924">'
+          + sign_svg() + '</div>'
           f'<div class="copy"><span class="eyebrow">{esc(SITE["home_eyebrow"])}</span>'
           f'<h1>{esc(SITE["home_headline"])}</h1><p>{esc(SITE["home_subline"])}</p>'
           f'<div class="actions"><a class="call" href="tel:{digits(SITE["office_phone"])}">Talk to an agent'

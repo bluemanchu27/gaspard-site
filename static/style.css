@@ -123,3 +123,30 @@ footer.site .fine{font-size:12px;color:var(--muted);line-height:1.6;max-width:70
 .faq summary::after{content:"+";position:absolute;right:4px;top:13px;font-family:var(--sans);font-weight:300;font-size:24px;color:var(--muted)}
 .faq details[open] summary::after{content:"\2212"}
 .faq details p{margin:0 0 18px;font-size:16px;line-height:1.65;max-width:62ch}
+
+/* Animated sign on the office sketch (home page) */
+.sketch-wrap{position:relative;width:100%}
+.sketch-wrap .sketch{display:block}
+.sign{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.sign .halo{fill:#FFDA80;opacity:0;animation:sign-glow 1.1s ease-out 2.3s forwards}
+.sign .face{fill:#FFFDF7;opacity:0;animation:sign-fade .6s ease-out 2.1s forwards}
+.sign .frame{fill:none;stroke:#011E60;stroke-linejoin:round;stroke-dasharray:1 1;stroke-dashoffset:1;animation:sign-draw .9s ease-in-out .2s forwards}
+.sign .f1{stroke-width:3.2}
+.sign .f2{stroke-width:1.8;animation-delay:.45s}
+.sign .ln{fill-opacity:0;stroke-width:1.1px;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-dasharray:1 1;stroke-dashoffset:1;
+  animation:sign-draw 1.1s ease-in-out calc(.7s + var(--i) * .035s) forwards, sign-fill .5s ease-out 1.9s forwards}
+.sign .n{fill:#011E60;stroke:#011E60}
+.sign .r{fill:#AD0908;stroke:#AD0908}
+@keyframes sign-draw{to{stroke-dashoffset:0}}
+@keyframes sign-fill{to{fill-opacity:1;stroke-opacity:0}}
+@keyframes sign-fade{to{opacity:1}}
+@keyframes sign-glow{0%{opacity:0}60%{opacity:1}100%{opacity:.85}}
+.sign-seen .sign *,.sign-seen .sign{animation:none!important}
+.sign-seen .sign .halo{opacity:.85}.sign-seen .sign .face{opacity:1}
+.sign-seen .sign .frame{stroke-dashoffset:0}
+.sign-seen .sign .ln{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}
+@media (prefers-reduced-motion: reduce){
+  .sign *{animation:none!important}
+  .sign .halo{opacity:.85}.sign .face{opacity:1}.sign .frame{stroke-dashoffset:0}
+  .sign .ln{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}
+}
