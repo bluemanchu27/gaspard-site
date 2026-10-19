@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Gaspard Team | Gaspard &amp; Co Real Estate</title>
+<meta name="description" content="The Gaspard Team at Gaspard &amp; Co Real Estate. Read our client reviews, then call or text us.">
+<link rel="icon" href="{{IMG}}/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap">
+<style>
+/* Gaspard Team ad landing page: photo, reviews, call/text, team, how we help, forms */
+:root{
+  --paper:#FFFFFF; --ink:#141414; --body:#353535; --muted:#6B6B68; --line:#E3E3DF; --tint:#F5F5F2;
+  --navy:#011E60; --red:#AD0908; --red-dark:#8E0706;
+  --serif:"Charis SIL", Charter, Georgia, serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);margin:0;line-height:1.12;text-wrap:balance}
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:56px}
+.rule{border-top:1.5px solid var(--ink)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.top img{height:50px;width:auto}
+.top a.call-sm{font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--ink);padding:9px 14px}
+.hero{padding-block:24px 0}
+.hero .photo{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 15%;background:var(--tint)}
+.intro h1{font-size:clamp(38px,6vw,62px)}
+.intro p{margin:0;font-size:19px;max-width:40ch}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:440px;padding-top:6px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:54px;text-decoration:none;font-weight:600;font-size:16px;padding:0 14px;text-align:center}
+.btn.red{background:var(--red);color:#fff}.btn.red:hover{background:var(--red-dark)}
+.btn.line{border:1.5px solid var(--ink);color:var(--ink)}
+.jump{display:flex;flex-wrap:wrap;gap:10px 22px;padding-block:16px;border-block:1px solid var(--line);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.jump a{text-decoration:none}
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.people figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.people img{aspect-ratio:4/5;width:100%;object-fit:cover;object-position:top;background:var(--tint)}
+.people .nm{font-family:var(--serif);font-size:19px;color:var(--ink);padding-top:6px;line-height:1.2}
+.people .rl{font-size:13px;color:var(--muted)}
+.help{display:grid;gap:28px;margin-top:28px}
+@media (min-width:760px){.help{grid-template-columns:1fr 1fr}}
+.help div{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+.help h3{font-size:26px}
+.help ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.reviews{display:grid;gap:22px;margin-top:28px}
+@media (min-width:760px){.reviews{grid-template-columns:1fr 1fr}}
+blockquote{margin:0;padding-left:20px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:10px}
+blockquote p{margin:0;font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--ink)}
+blockquote footer{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.more{margin-top:24px;display:inline-flex;align-items:center;gap:12px;font-weight:500;text-decoration:none}
+.more::after{content:"";width:28px;height:1.5px;background:currentColor}
+.forms{background:var(--tint)}
+.forms .grid{display:grid;gap:40px;margin-top:28px}
+@media (min-width:860px){.forms .grid{grid-template-columns:1fr 1fr}}
+form{display:flex;flex-direction:column;gap:12px;min-width:0}
+form h3{font-size:26px}
+form p.sub{margin:0 0 4px;font-size:15px}
+label{font-size:13px;font-weight:500;color:var(--ink);display:flex;flex-direction:column;gap:6px}
+input,select,textarea{font:inherit;font-weight:400;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid #CFCFCA;padding:12px;width:100%;border-radius:0}
+textarea{min-height:90px;resize:vertical}
+button{font:inherit;font-weight:600;font-size:16px;background:var(--ink);color:#fff;border:0;min-height:52px;cursor:pointer}
+.err{font-size:13px;color:var(--red)}
+.hp{position:absolute;left:-9999px}
+footer.site{border-top:1px solid var(--line)}
+footer.site .wrap{padding-block:32px 40px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.fine{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap top"><a href="{{HOME}}"><img src="{{IMG}}/logo.svg" alt="Gaspard &amp; Co Real Estate" width="360" height="223"></a><a class="call-sm" href="tel:{{CELL}}">Call us</a></div>
+
+<main>
+<div class="wrap">
+  <section class="hero" aria-label="The Gaspard Team">
+    <img class="photo" src="{{IMG}}/gaspard-team-color.jpg" alt="Robin Gaspard, Linda Gaspard and Scott Gaspard">
+  </section>
+
+  <section id="reviews" aria-labelledby="rv">
+    <span class="eyebrow">Reviews</span>
+    <h2 id="rv" style="font-size:clamp(30px,4vw,40px);margin-top:10px">What clients say</h2>
+    <p style="margin:10px 0 0;font-size:18px;color:var(--ink)"><span aria-hidden="true" style="letter-spacing:2px">★★★★★</span> {{RATING}}</p>
+    <div class="reviews">{{REVIEWS}}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 32px"><a class="more" href="{{ZILLOW}}" target="_blank" rel="noopener">Read more reviews on Zillow</a><a class="more" href="{{GOOGLE}}" target="_blank" rel="noopener">Read more reviews on Google</a></div>
+  </section>
+
+  <section class="rule intro" aria-labelledby="h">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:680px">
+      <span class="eyebrow">The Gaspard Team</span>
+      <h1 id="h">{{HEADLINE}}</h1>
+      <p>{{INTRO}}</p>
+      <div class="btns" style="margin-top:12px"><a class="btn red" href="tel:{{CELL}}">Call us now</a><a class="btn line" href="sms:{{CELL}}">Text us now</a></div>
+    </div>
+  </section>
+
+  <nav class="jump" aria-label="On this page"><a href="#team">Meet us</a><a href="#help">How we help</a><a href="#contact">Contact</a><a href="#value">Home value</a></nav>
+
+  <section id="team" class="rule" aria-labelledby="t">
+    <span class="eyebrow">Meet the team</span>
+    <h2 id="t" style="font-size:clamp(30px,4vw,40px);margin-top:10px">Three agents, one goal: your move</h2>
+    <div class="people">{{PEOPLE}}</div>
+  </section>
+
+  <section id="help" class="rule" aria-labelledby="hw">
+    <span class="eyebrow">How we help</span>
+    <h2 id="hw" style="font-size:clamp(30px,4vw,40px);margin-top:10px">Whether you're buying or selling</h2>
+    <div class="help">
+      <div><h3>Selling</h3><ul><li>A clear price based on what's really selling near you</li><li>Advice on what to fix, and what to leave alone</li><li>Marketing that gets your home seen</li><li>We handle offers, inspections and closing</li></ul></div>
+      <div><h3>Buying</h3><ul><li>Help finding homes that fit your budget and life</li><li>Honest advice on value before you make an offer</li><li>Strong negotiating when it matters</li><li>We keep the process on track to closing day</li></ul></div>
+    </div>
+  </section>
+  {{VIDEO}}
+</div>
+
+<section class="forms" aria-label="Contact forms">
+  <div class="wrap">
+    <span class="eyebrow">Get in touch</span>
+    <h2 style="font-size:clamp(30px,4vw,40px);margin-top:10px">Let's talk about your move</h2>
+    <div class="grid">
+      <form id="contact" name="gaspard-team-contact" method="POST" action="{{THANKS}}" data-netlify="true" netlify-honeypot="company" novalidate>
+        <input type="hidden" name="form-name" value="gaspard-team-contact">
+        <label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>
+        <h3>Send us a note</h3>
+        <p class="sub">We'll call or text you back.</p>
+        <label for="c-name">Name<input id="c-name" name="name" autocomplete="name" placeholder="Jane Smith"></label>
+        <label for="c-phone">Phone<input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="225-555-0123"></label>
+        <label for="c-need">I'm looking to<select id="c-need" name="need"><option>Sell</option><option>Buy</option><option>Buy and sell</option><option>Just ask a question</option></select></label>
+        <label for="c-msg">Anything we should know?<textarea id="c-msg" name="message" placeholder="Timing, neighborhood, questions"></textarea></label>
+        <span class="err" id="c-err" hidden>Enter your name and phone number so we can reach you.</span>
+        <button type="submit">Send</button>
+      </form>
+      <form id="value" name="home-value" method="POST" action="{{THANKS}}" data-netlify="true" netlify-honeypot="company" novalidate>
+        <input type="hidden" name="form-name" value="home-value">
+        <label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>
+        <h3>What's my home worth?</h3>
+        <p class="sub">Get a free price estimate from a local agent, not an online guess.</p>
+        <label for="v-addr">Home address<input id="v-addr" name="address" autocomplete="street-address" placeholder="123 Oak St, Denham Springs"></label>
+        <label for="v-name">Name<input id="v-name" name="name" autocomplete="name" placeholder="Jane Smith"></label>
+        <label for="v-phone">Phone<input id="v-phone" name="phone" type="tel" autocomplete="tel" placeholder="225-555-0123"></label>
+        <span class="err" id="v-err" hidden>Enter the address, your name and your phone number.</span>
+        <button type="submit">Get my home value</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="{{IMG}}/bench.jpg" alt="Gaspard &amp; Co Real Estate: Robin Gaspard, Linda Gaspard and Scott Gaspard. Office {{OFFICE}}" width="1400" height="467" loading="lazy" style="width:100%;height:auto;max-width:900px">
+  <div>Gaspard &amp; Co Real Estate · {{ADDRESS}} · Office {{OFFICE}}</div>
+  <div class="fine">{{LEGAL}}. Licensed by the Louisiana Real Estate Commission, brokerage license {{LICENSE}}. Equal Housing Opportunity.</div>
+</div></footer>
+
+<script>
+function check(formId, fields, errId){
+  var f = document.getElementById(formId);
+  f.addEventListener('submit', function(e){
+    var ok = fields.every(function(id){ return document.getElementById(id).value.trim() !== ''; });
+    document.getElementById(errId).hidden = ok;
+    if (!ok) e.preventDefault();
+  });
+  fields.forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ document.getElementById(errId).hidden = true; }); });
+}
+check('contact', ['c-name','c-phone'], 'c-err');
+check('value', ['v-addr','v-name','v-phone'], 'v-err');
+</script>
+</body>
+</html>

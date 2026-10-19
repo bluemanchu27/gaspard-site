@@ -1,0 +1,181 @@
+# Settings for Pages CMS (https://pagescms.org), the simple editor for this site.
+# Log in at app.pagescms.org with GitHub, open this repository, and edit agents,
+# reviews and company info as forms. Saving updates the live site in about a minute.
+
+media:
+  input: static/img
+  output: /img
+
+content:
+  - name: agents
+    label: Agents
+    type: collection
+    path: content/agents
+    format: json
+    filename: "{primary}.json"
+    view:
+      primary: name
+      fields: [name, team]
+    fields:
+      - name: name
+        label: Full name
+        type: string
+        required: true
+      - name: photo
+        label: Headshot (black-and-white, white background)
+        type: image
+      - name: page_photo
+        label: Larger photo for their own page (optional)
+        type: image
+      - name: team
+        label: Team
+        type: select
+        options:
+          values: [independent, gaspard-team, wattam-five-star-team]
+      - name: team_lead
+        label: Team lead
+        type: boolean
+      - name: mobile
+        label: Mobile phone
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: bio
+        label: Bio (leave a blank line between paragraphs)
+        type: text
+      - name: reviews
+        label: Client reviews
+        type: object
+        list: true
+        fields:
+          - name: quote
+            label: Review, word for word
+            type: text
+          - name: client
+            label: Client name
+            type: string
+          - name: detail
+            label: Detail (for example "Sold in Denham Springs, 2025")
+            type: string
+      - name: review_links
+        label: Links to more reviews
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Link text (for example "Read more reviews on Zillow")
+            type: string
+          - name: url
+            label: Web address
+            type: string
+      - name: hidden
+        label: Hide this agent from the website
+        type: boolean
+
+  - name: teams
+    label: Teams
+    type: collection
+    path: content/teams
+    format: json
+    view:
+      primary: name
+    fields:
+      - name: name
+        label: Team name
+        type: string
+      - name: photo
+        label: Group photo
+        type: image
+      - name: photo_caption
+        label: Names in the photo, left to right
+        type: string
+      - name: order
+        label: Order on the agents page
+        type: number
+
+  - name: landing
+    label: Gaspard Team ad page
+    type: file
+    path: content/gaspard-team-landing.json
+    format: json
+    fields:
+      - name: rating_line
+        label: Rating line
+        type: string
+      - name: reviews
+        label: Reviews (four is ideal)
+        type: object
+        list: true
+        fields:
+          - name: quote
+            label: Review, word for word
+            type: text
+          - name: client
+            label: Client name
+            type: string
+          - name: detail
+            label: Detail (for example "Sold in Denham Springs, 2025")
+            type: string
+      - name: zillow_url
+        label: Zillow reviews link
+        type: string
+      - name: google_url
+        label: Google reviews link
+        type: string
+      - name: headline
+        label: Headline
+        type: string
+      - name: intro
+        label: Intro paragraph
+        type: text
+      - name: cell
+        label: Call and text number
+        type: string
+      - name: video_url
+        label: Team video link (optional)
+        type: string
+
+  - name: site
+    label: Company info
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: company
+        label: Company name
+        type: string
+      - name: legal_name
+        label: Legal name
+        type: string
+      - name: office_phone
+        label: Office phone
+        type: string
+      - name: office_email
+        label: Office email (form leads go here)
+        type: string
+      - name: address
+        label: Office address
+        type: string
+      - name: brokerage_license
+        label: Brokerage license number
+        type: string
+      - name: home_eyebrow
+        label: Home page small line above headline
+        type: string
+      - name: home_headline
+        label: Home page headline
+        type: string
+      - name: home_subline
+        label: Home page line under headline
+        type: text
+      - name: home_preview
+        label: Agents shown on the home page, in order (file names, like leslie-green)
+        type: string
+        list: true
+      - name: company_story
+        label: Company story
+        type: text
+      - name: idx_embed
+        label: Home search (IDX) code from Flexmls. Leave empty until ready.
+        type: text

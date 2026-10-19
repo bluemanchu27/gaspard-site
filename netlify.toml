@@ -1,0 +1,9 @@
+# Netlify builds the site with Python's standard library only. No packages to install.
+[build]
+  command = "python3 build.py"
+  publish = "dist"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
