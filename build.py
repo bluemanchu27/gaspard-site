@@ -238,7 +238,21 @@ def about_page():
           f'<div><span>Office</span><span>{esc(SITE["address"])}</span></div>'
           f'<div><span>Phone</span><span><a href="tel:{digits(SITE["office_phone"])}">{OFFICE}</a></span></div>'
           f'<div><span>Email</span><span style="overflow-wrap:anywhere"><a href="mailto:{esc(SITE["office_email"])}">{esc(SITE["office_email"])}</a></span></div>'
-          '</div></div></section></div></main>\n')
+          '</div></div></section>'
+          '<section class="block rule" style="max-width:720px" id="contact"><h2 style="font-size:32px">Send us a message</h2>'
+          '<p class="lede" style="font-size:17px">Tell us what you need and the right agent will get back to you.</p>'
+          f'<form class="cform" id="cc" name="company-contact" method="POST" action="{page_url("thanks")}" data-netlify="true" netlify-honeypot="company" novalidate>'
+          '<input type="hidden" name="form-name" value="company-contact">'
+          '<label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>'
+          '<label for="cc-name">Name<input id="cc-name" name="name" autocomplete="name"></label>'
+          '<label for="cc-phone">Phone<input id="cc-phone" name="phone" type="tel" autocomplete="tel"></label>'
+          '<label for="cc-email">Email (optional)<input id="cc-email" name="email" type="email" autocomplete="email"></label>'
+          '<label for="cc-need">I\'m looking to<select id="cc-need" name="need"><option>Sell</option><option>Buy</option><option>Buy and sell</option><option>Talk about joining Gaspard &amp; Co Real Estate</option><option>Something else</option></select></label>'
+          '<label for="cc-msg">Message<textarea id="cc-msg" name="message"></textarea></label>'
+          '<p class="err" id="cc-err" hidden>Please add your name and phone number.</p>'
+          '<button type="submit">Send message</button></form>'
+          '<script>(function(){var f=document.getElementById("cc");f.addEventListener("submit",function(e){var ok=["cc-name","cc-phone"].every(function(i){return document.getElementById(i).value.trim()!==""});document.getElementById("cc-err").hidden=ok;if(!ok)e.preventDefault();});})();</script>'
+          '</section></div></main>\n')
     return s + footer() + tail()
 
 

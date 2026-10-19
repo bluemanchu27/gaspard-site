@@ -101,3 +101,12 @@ footer.site img{height:64px;width:auto}
 footer.site .cols{display:flex;flex-wrap:wrap;gap:12px 48px;font-size:15px}
 footer.site .cols div{display:flex;flex-direction:column;gap:4px}
 footer.site .fine{font-size:12px;color:var(--muted);line-height:1.6;max-width:70ch}
+
+/* Company contact form (About page) */
+.cform{display:flex;flex-direction:column;gap:12px;margin-top:20px;max-width:560px}
+.cform label{font-size:13px;font-weight:500;color:var(--ink);display:flex;flex-direction:column;gap:6px}
+.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid #CFCFCA;padding:12px;width:100%;border-radius:0}
+.cform textarea{min-height:110px;resize:vertical}
+.cform button{font:inherit;font-weight:600;font-size:16px;background:var(--ink);color:#fff;border:0;min-height:52px;cursor:pointer}
+.cform .err{font-size:13px;color:var(--red)}
+.cform .hp{position:absolute;left:-9999px}
