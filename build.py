@@ -65,6 +65,7 @@ TEAM_NAME = {t["slug"]: t["name"] for t in TEAMS}
 
 COMPANY = esc(SITE["company"])
 OFFICE = esc(SITE["office_phone"])
+FULL_ADDRESS = SITE["address"] + (" " + SITE["postal_code"] if SITE.get("postal_code") else "")
 CSS = open(os.path.join(STATIC, "style.css"), encoding="utf-8").read()
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap">')
@@ -157,7 +158,7 @@ def footer():
     return (f'<footer class="site"><div class="wrap"><img src="{img("/img/logo.svg")}" alt="{COMPANY}" width="360" height="223" loading="lazy">'
             f'<div class="cols"><div><strong style="font-weight:600;color:var(--ink)">Office</strong><a href="tel:{digits(SITE["office_phone"])}">{OFFICE}</a></div>'
             f'<div><strong style="font-weight:600;color:var(--ink)">Email</strong><a href="mailto:{email}" style="overflow-wrap:anywhere">{email}</a></div>'
-            f'<div><strong style="font-weight:600;color:var(--ink)">Address</strong><span>{esc(SITE["address"])}</span></div></div>'
+            f'<div><strong style="font-weight:600;color:var(--ink)">Address</strong><span>{esc(FULL_ADDRESS)}</span></div></div>'
             f'<p class="fine">{esc(SITE["legal_name"])}. Licensed by the Louisiana Real Estate Commission, brokerage license {esc(SITE["brokerage_license"])}. '
             'Equal Housing Opportunity.</p></div></footer>\n')
 
@@ -304,7 +305,7 @@ def about_page():
           f'<p class="lede" style="font-size:20px;line-height:1.7;margin-top:22px">{esc(SITE["company_story"])}</p></section>'
           '<section class="block rule" style="max-width:720px"><h2 style="font-size:32px">Visit or call</h2>'
           '<div class="agent" style="padding:20px 0 0;display:block"><div class="meta">'
-          f'<div><span>Office</span><span>{esc(SITE["address"])}</span></div>'
+          f'<div><span>Office</span><span>{esc(FULL_ADDRESS)}</span></div>'
           f'<div><span>Phone</span><span><a href="tel:{digits(SITE["office_phone"])}">{OFFICE}</a></span></div>'
           f'<div><span>Email</span><span style="overflow-wrap:anywhere"><a href="mailto:{esc(SITE["office_email"])}">{esc(SITE["office_email"])}</a></span></div>'
           '</div></div></section>'
@@ -383,7 +384,7 @@ def landing_page():
         "{{IMG}}": img("/img/").rstrip("/"),
         "{{THANKS}}": page_url("thanks"),
         "{{OFFICE}}": OFFICE,
-        "{{ADDRESS}}": esc(SITE["address"]),
+        "{{ADDRESS}}": esc(FULL_ADDRESS),
         "{{LEGAL}}": esc(SITE["legal_name"]),
         "{{LICENSE}}": esc(SITE["brokerage_license"]),
         "{{HOME}}": page_url(""),
