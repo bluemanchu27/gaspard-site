@@ -7,6 +7,12 @@
   "mobile": "225-329-4349",
   "email": "bill@patwattam.com",
   "bio": "Bill Arey has lived in Baton Rouge his entire life. Since joining the Wattam Five Star Team in 2009, he has worked with hundreds of home buyers and sellers and participated in over $65,000,000 of sales volume.\n\nWords that come up again and again in client reviews: knowledgeable, professional, highly responsive, calm, patient.\n\nBill is a graduate of LSU with Bachelor of Music and Master of Music degrees. He still performs regularly on classical guitar and leads the St. Alban’s Ukulele Orchestra.",
-  "reviews": [],
+  "reviews": [
+    {
+      "quote": "Bill Arey approached the sale of our house as if it were his own person home. He even drove 40 minutes at midnights in a storm because the alarm went off inside the house. He always kept us informed and provided us with information so we could make necessary decisions. I am so grateful he encouraged us at the very beginning to make necessary updates to our house so we weren't overwhelmed at the end. He is an excellent photographer and videographer and captured our house with creativity. His calm and professional manner took the stress out of very stressful situation - the sale of a home. I highly recommend him.",
+      "client": "Pam K.",
+      "detail": "Seller"
+    }
+  ],
   "review_links": []
 }

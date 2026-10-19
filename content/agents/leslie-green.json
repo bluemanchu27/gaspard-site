@@ -7,6 +7,12 @@
   "mobile": "225-298-6900",
   "email": "leslie@patwattam.com",
   "bio": "",
-  "reviews": [],
+  "reviews": [
+    {
+      "quote": "Leslie was absolutely an incredible buyer's agent. She assisted us in finding exactly what we wanted and was very patient as we changed our minds several times! I highly recommend her and will use her for my next home purchase!",
+      "client": "Donna S.",
+      "detail": "Buyer"
+    }
+  ],
   "review_links": []
 }

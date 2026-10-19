@@ -7,6 +7,12 @@
   "mobile": "225-431-4810",
   "email": "stuart@patwattam.com",
   "bio": "After a long career in sales and management with department stores like Dillard’s and Macy’s, I followed my lifelong interest in real estate and joined my good friend Pat Wattam in the business. My stores did well because customers left feeling good about the experience, and I bring that same approach to every buyer and seller I work with.\n\nI’m a native of Dallas and spent my school years in Minneapolis before returning to Texas for college, earning a Bachelor of Science in Economics from Southern Methodist University. The last 15 years have been in Louisiana with my wife and our grown children. I enjoy time with family, working in the yard, and walking the trails around the Baton Rouge area.",
-  "reviews": [],
+  "reviews": [
+    {
+      "quote": "I was so fortunate to meet Stuart Bailey at an open house. He proved to be an incredible agent that committed to help me through the entire process. From the beginning to the end, his level of knowledge and professionalism guided me during initial showings, offers, contract negotiation, inspection and closing. He was always patient and responsive to my many questions and concerns and kept me informed of what to expect next and all those important timelines. His work ethic far exceeded my expectations. Stuart and his team… are exceptional and I’m grateful to have had this home buying experience.",
+      "client": "Mary N.",
+      "detail": "Buyer"
+    }
+  ],
   "review_links": []
 }
