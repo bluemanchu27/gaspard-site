@@ -39,6 +39,8 @@ def digits(phone):
 # ---------------------------------------------------------------- content
 SITE = load(os.path.join(CONTENT, "site.json"))
 LANDING = load(os.path.join(CONTENT, "gaspard-team-landing.json"))
+FAQ_PATH = os.path.join(CONTENT, "faq.json")
+FAQ = load(FAQ_PATH) if os.path.exists(FAQ_PATH) else {"groups": []}
 
 AGENTS = []
 for fn in sorted(os.listdir(os.path.join(CONTENT, "agents"))):
@@ -130,6 +132,27 @@ def paragraphs(text):
 
 
 # ---------------------------------------------------------------- pages
+def faq_html():
+    groups = [g for g in FAQ.get("groups", []) if g.get("items")]
+    if not groups:
+        return ""
+    out = ('<section class="faq" id="faq" aria-labelledby="fq"><div class="wrap"><div class="head"><h2 id="fq">'
+           f'{esc(FAQ.get("heading", "Frequently asked questions"))}</h2></div>')
+    if FAQ.get("intro"):
+        out += f'<p class="lede">{esc(FAQ["intro"])}</p>'
+    out += '<div class="faq-groups">'
+    ld = []
+    for g in groups:
+        out += f'<div class="faq-group"><h3>{esc(g["name"])}</h3>'
+        for it in g["items"]:
+            out += f'<details><summary>{esc(it["q"])}</summary><p>{esc(it["a"])}</p></details>'
+            ld.append({"@type": "Question", "name": it["q"], "acceptedAnswer": {"@type": "Answer", "text": it["a"]}})
+        out += '</div>'
+    out += '</div></div></section>'
+    data = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": ld}, ensure_ascii=False).replace("</", "<\\/")
+    return out + f'<script type="application/ld+json">{data}</script>'
+
+
 def home():
     preview = [BY_SLUG[s] for s in SITE.get("home_preview", []) if s in BY_SLUG]
     s = head(COMPANY, f"{COMPANY}, a real estate company with local roots going back to 1979.")
@@ -146,7 +169,7 @@ def home():
           + "".join(card(a) for a in preview) +
           f'</div><p style="margin:32px 0 0"><a class="arrow" href="{page_url("agents")}">Meet all of our agents</a></p></section></div>'
           '<section class="about" aria-labelledby="ab"><div class="wrap"><div class="inner"><span class="eyebrow">About the company</span>'
-          f'<h2 id="ab">{COMPANY}</h2><p>{esc(SITE["company_story"])}</p></div></div></section></main>\n')
+          f'<h2 id="ab">{COMPANY}</h2><p>{esc(SITE["company_story"])}</p></div></div></section>' + faq_html() + '</main>\n')
     return s + footer() + tail()
 
 

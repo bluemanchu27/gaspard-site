@@ -1,0 +1,106 @@
+{
+  "heading": "Questions we hear most",
+  "intro": "Straight answers about buying and selling a home in the greater Baton Rouge area. Don't see your question? Call the office and an agent will walk you through it.",
+  "groups": [
+    {
+      "name": "Buying",
+      "items": [
+        {
+          "q": "How much do I need for a down payment and closing costs?",
+          "a": "It depends on your loan. Some programs, like VA and USDA loans, allow little or nothing down, while conventional and FHA loans have their own minimums. Closing costs are separate and can sometimes be negotiated so the seller pays part of them. A lender can give you exact numbers for your situation. We work with some of the area's top lenders and will point you in the right direction."
+        },
+        {
+          "q": "Why should I get pre-approved before looking at homes?",
+          "a": "A pre-approval tells you exactly what you can afford, and it shows sellers you're a serious buyer. In a competitive situation, an offer with a pre-approval letter is often chosen over one without. It also helps you avoid falling in love with a home outside your budget."
+        },
+        {
+          "q": "Does it cost me anything to use a buyer's agent?",
+          "a": "Before we start touring homes, we'll sign a simple written agreement that explains how your agent is paid. In many sales the seller covers some or all of that cost, and we can ask for it as part of your offer. We'll go over all of it up front so there are no surprises."
+        },
+        {
+          "q": "What happens after my offer is accepted?",
+          "a": "Once your offer is accepted, the clock starts. You'll schedule inspections, finalize your loan, and the lender will order an appraisal. The title company checks that the property's title is clear, and you'll shop for homeowner's insurance (and flood insurance if needed). Your agent keeps track of every deadline and keeps everyone moving toward closing day."
+        },
+        {
+          "q": "What does a home inspection cover, and what if it finds problems?",
+          "a": "A licensed inspector looks at the home's major systems: roof, foundation, plumbing, electrical, heating and air, and more. If problems turn up, you can ask the seller to make repairs, offer a credit, or lower the price. Depending on your contract, you may also be able to walk away during the inspection period. We'll help you decide what's worth pushing for."
+        },
+        {
+          "q": "How do I know if a home is in a flood zone, and do I need flood insurance?",
+          "a": "We can look up a home's FEMA flood zone before you make an offer. If the home is in a high-risk zone and you're getting a mortgage, your lender will require flood insurance. Even outside those zones, many homeowners here carry flood insurance anyway, and we always recommend getting a quote early. The seller's property disclosure will also tell you whether the home has flooded before."
+        },
+        {
+          "q": "What is the \"act of sale\"?",
+          "a": "The act of sale is what Louisiana calls closing. It's the day the buyer and seller sign the final documents, usually at a title company or attorney's office, in front of a notary. The money changes hands, the sale is recorded, and you get your keys."
+        },
+        {
+          "q": "How long does it take to buy a home?",
+          "a": "It varies with how long you search. Once you're under contract, a financed purchase usually takes about a month to six weeks to close, and a cash purchase can close faster. Getting pre-approved first is the best way to keep things on schedule."
+        }
+      ]
+    },
+    {
+      "name": "Selling",
+      "items": [
+        {
+          "q": "What is my home worth?",
+          "a": "Online estimates can be far off, because they can't see your home's condition, updates or the details of your street. We'll prepare a free market analysis that compares your home with similar homes that have recently sold nearby, so you have a realistic price to work with."
+        },
+        {
+          "q": "What does it cost to sell a house in Louisiana?",
+          "a": "Common seller costs include the real estate commission, your share of title and closing fees, prorated property taxes, and paying off your mortgage. Other items, like who pays for the termite inspection, are negotiated between buyer and seller. Every sale is different, so before you list we'll give you a net sheet that estimates what you'll walk away with."
+        },
+        {
+          "q": "What do I have to disclose when I sell?",
+          "a": "Most Louisiana sellers fill out the Louisiana Residential Property Disclosure. It covers what you know about the home's condition, such as the roof, plumbing, past flooding or termite damage. Being honest and complete protects you after the sale. We'll walk you through the form."
+        },
+        {
+          "q": "Should I make repairs or updates before I list?",
+          "a": "Not always. Fixing obvious problems and freshening up paint and landscaping usually pay off, while big remodels often don't return what they cost. We'll walk through your home with you and tell you which projects are worth it for your price range."
+        },
+        {
+          "q": "How long will it take to sell my home?",
+          "a": "It depends on price, condition, location and the market at that moment. A well-priced home in good shape sells faster. We'll show you how long similar homes near you have taken to sell, so you can plan your move."
+        },
+        {
+          "q": "Can I buy a new home before I sell my current one?",
+          "a": "Often, yes. Some buyers make an offer that depends on selling their current home first, some qualify to carry both mortgages for a short time, and others line up both closings for the same day. We'll help you choose the approach that fits your finances and timing."
+        },
+        {
+          "q": "How do you market a home?",
+          "a": "Every listing gets professional photos, a strong MLS listing that reaches every agent in the area, and exposure across the major home search sites and social media. We price it right from day one, because the first few weeks on the market matter most."
+        }
+      ]
+    },
+    {
+      "name": "Louisiana and local",
+      "items": [
+        {
+          "q": "How do I file for homestead exemption?",
+          "a": "The homestead exemption lowers the property taxes on the home you live in as your primary residence. You file once with your parish assessor's office after you buy, and many parishes now let you file online. File soon after your closing so you don't miss out on the savings."
+        },
+        {
+          "q": "How are property taxes figured?",
+          "a": "Your parish assessor sets your home's assessed value, and local tax rates (called millage) are applied to it. Rates differ by parish and even by area within a parish, so two homes at the same price can have different tax bills. We can look up the current taxes on any home you're considering."
+        },
+        {
+          "q": "Is it a buyer's market or a seller's market right now?",
+          "a": "It depends on the price range and the neighborhood, and it changes throughout the year. Call us and we'll pull current numbers for the areas you're interested in, including how fast homes are selling and how close to asking price."
+        }
+      ]
+    },
+    {
+      "name": "Working with us",
+      "items": [
+        {
+          "q": "What areas do you serve?",
+          "a": "Our agents help buyers and sellers throughout the greater Baton Rouge area and the surrounding parishes. If you're not sure whether we cover your area, give us a call."
+        },
+        {
+          "q": "What makes Gaspard & Co Real Estate different?",
+          "a": "Gaspard & Co Real Estate has local roots going back to 1979 and brings together some of south Louisiana's most experienced agents. Each agent has their own style, and all of them bring the same care to every client. You can browse our agents and read their reviews to find the one who fits you best, or call the office and we'll help you pick."
+        }
+      ]
+    }
+  ]
+}
