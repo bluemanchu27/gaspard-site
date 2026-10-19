@@ -124,39 +124,31 @@ footer.site .fine{font-size:12px;color:var(--muted);line-height:1.6;max-width:70
 .faq details[open] summary::after{content:"\2212"}
 .faq details p{margin:0 0 18px;font-size:16px;line-height:1.65;max-width:62ch}
 
-/* Animated sign on the office sketch (home page):
-   sign draws in, the street lamps warm up, then the sign switches on bright white */
+/* Office sign on the sketch (home page):
+   the sign starts unlit, the street lamps warm up, then about a second later the sign switches on bright */
 .sketch-wrap{position:relative;width:100%}
 .sketch-wrap .sketch{display:block}
 .sign{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .sign .lamps{mix-blend-mode:multiply}
-.sign .lamp{opacity:0;animation:lamp-on 1.2s ease-out 2.4s forwards}
-.sign .l2{animation-delay:2.6s}
-.sign .face.dim{fill:#E4E8F0;opacity:0;animation:sign-fade .5s ease-out .9s forwards}
-.sign .face.lit{fill:#FFFFFF;opacity:0;animation:sign-fade .35s ease-out 3.5s forwards}
-.sign .bloom{fill:#FFFFFF;opacity:0;animation:bloom-on .9s ease-out 3.5s forwards}
-.sign .frame{fill:none;stroke:#011E60;stroke-linejoin:round;stroke-dasharray:1 1;stroke-dashoffset:1;animation:sign-draw .9s ease-in-out .2s forwards}
+.sign .lamp{opacity:0;animation:lamp-on 1.1s ease-out .5s forwards}
+.sign .l2{animation-delay:.7s}
+.sign .face{fill:#FFFFFF}
+.sign .frame{fill:none;stroke:#011E60;stroke-linejoin:round}
 .sign .f1{stroke-width:3.2}
-.sign .f2{stroke-width:1.8;animation-delay:.45s}
-.sign .ln{fill-opacity:0;stroke-width:1.1px;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-dasharray:1 1;stroke-dashoffset:1;
-  animation:sign-draw 1.1s ease-in-out calc(.7s + var(--i) * .035s) forwards, sign-fill .5s ease-out 1.9s forwards}
-.sign .n{fill:#011E60;stroke:#011E60}
-.sign .r{fill:#AD0908;stroke:#AD0908}
-.sign .letters{animation:letters-pop .6s ease-out 3.5s both}
-@keyframes sign-draw{to{stroke-dashoffset:0}}
-@keyframes sign-fill{to{fill-opacity:1;stroke-opacity:0}}
-@keyframes sign-fade{to{opacity:1}}
-@keyframes lamp-on{0%{opacity:0}100%{opacity:.6}}
-@keyframes bloom-on{0%{opacity:0}40%{opacity:1}100%{opacity:.85}}
-@keyframes letters-pop{0%{filter:saturate(.75) brightness(.9)}100%{filter:none}}
-.sign-seen .sign *,.sign-seen .sign{animation:none!important}
-.sign-seen .sign .lamp{opacity:.6}
-.sign-seen .sign .bloom{opacity:.85}
-.sign-seen .sign .face{opacity:1}
-.sign-seen .sign .frame{stroke-dashoffset:0}
-.sign-seen .sign .ln{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}
+.sign .f2{stroke-width:1.8}
+.sign .n{fill:#011E60}
+.sign .r{fill:#AD0908}
+.sign .shade{fill:#AEB6C6;mix-blend-mode:multiply;opacity:.55;animation:shade-off .35s ease-out 1.7s forwards}
+.sign .bloom{fill:#FFFFFF;opacity:0;animation:bloom-on 1s ease-out 1.7s forwards}
+@keyframes lamp-on{to{opacity:.6}}
+@keyframes shade-off{to{opacity:0}}
+@keyframes bloom-on{0%{opacity:0}35%{opacity:1}55%{opacity:.8}75%{opacity:1}100%{opacity:1}}
+.sign-seen .sign *{animation:none!important}
+.sign-seen .sign .lamp{opacity:.6}.sign-seen .sign .shade{opacity:0}.sign-seen .sign .bloom{opacity:1}
 @media (prefers-reduced-motion: reduce){
   .sign *{animation:none!important}
+  .sign .lamp{opacity:.6}.sign .shade{opacity:0}.sign .bloom{opacity:1}
+}
   .sign .lamp{opacity:.6}.sign .bloom{opacity:.85}.sign .face{opacity:1}.sign .frame{stroke-dashoffset:0}
   .sign .ln{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}
 }

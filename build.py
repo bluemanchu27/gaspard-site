@@ -181,26 +181,28 @@ def paragraphs(text):
 # ---------------------------------------------------------------- pages
 
 def sign_svg():
-    """Animated sign over the office sketch: frame and lettering draw in, fill, then glow."""
+    """Office sign over the sketch: starts unlit, the street lamps warm up, then the sign switches on bright."""
     logo = open(os.path.join(STATIC, "img", "logo.svg"), encoding="utf-8").read()
     paths = re.findall(r'<path[^>]*fill="([^"]+)"[^>]*d="([^"]+)"', logo)
     navy, red = [], []
     for i, (fill, d) in enumerate(paths):
         cls = "r" if fill.startswith("rgb(67") else "n"
-        el = f'<path class="ln {cls}" pathLength="1" style="--i:{i}" d="{d}"/>'
+        el = f'<path class="{cls}" d="{d}"/>'
         (red if cls == "r" else navy).append(el)
     outer = "M409 146 L619 168.5 L619 274.5 L408 256.5 Z"
     inner = "M418.75 150 L616.25 171.25 L616.25 268.75 L417.5 252.5 Z"
     return ('<svg class="sign" viewBox="0 0 949 924" aria-hidden="true" focusable="false">'
-            '<defs><filter id="bloom" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>'
+            '<defs><filter id="bloom" x="-60%" y="-90%" width="220%" height="280%"><feGaussianBlur stdDeviation="26"/></filter>'
+            '<filter id="bloom2" x="-30%" y="-40%" width="160%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>'
             '<radialGradient id="lampglow"><stop offset="0" stop-color="#FFC24A" stop-opacity="1"/><stop offset=".45" stop-color="#FFD27A" stop-opacity=".75"/>'
             '<stop offset="1" stop-color="#FFE3A6" stop-opacity="0"/></radialGradient></defs>'
             '<g class="lamps"><ellipse class="lamp l1" cx="78" cy="150" rx="78" ry="88" fill="url(#lampglow)"/>'
             '<ellipse class="lamp l2" cx="332" cy="172" rx="70" ry="80" fill="url(#lampglow)"/></g>'
-            f'<path class="bloom" d="{outer}" filter="url(#bloom)"/>'
-            f'<path class="face dim" d="{inner}"/><path class="face lit" d="{inner}"/>'
-            f'<path class="frame f1" pathLength="1" d="{outer}"/><path class="frame f2" pathLength="1" d="{inner}"/>'
-            '<g class="letters" transform="matrix(0.45 0.04275 -0.0055 0.45 437.26 152.1)">' + "".join(navy) + "".join(red) + '</g></svg>')
+            f'<path class="bloom wide" d="{outer}" filter="url(#bloom)"/><path class="bloom tight" d="{outer}" filter="url(#bloom2)"/>'
+            f'<path class="face" d="{inner}"/>'
+            f'<path class="frame f1" d="{outer}"/><path class="frame f2" d="{inner}"/>'
+            '<g class="letters" transform="matrix(0.45 0.04275 -0.0055 0.45 437.26 152.1)">' + "".join(navy) + "".join(red) + '</g>'
+            f'<path class="shade" d="{inner}"/></svg>')
 
 
 def faq_html():
