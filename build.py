@@ -352,6 +352,13 @@ def main():
         write(f"teams/{t['slug']}/index.html", team_page(t))
     for a in AGENTS:
         write(f"agents/{a['slug']}/index.html", agent_page(a))
+    if not PREVIEW:  # help search engines find every page
+        base = SITE.get("site_url", "https://gaspardandcorealestate.com").rstrip("/")
+        paths = ["", "agents/", "about/", "search/", "gaspard-team/"] + [f"teams/{t['slug']}/" for t in TEAMS] + [f"agents/{a['slug']}/" for a in AGENTS]
+        sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        sm += "".join(f"  <url><loc>{base}/{p}</loc></url>\n" for p in paths) + "</urlset>\n"
+        open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write(sm)
+        open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
     if PREVIEW:  # artifact entry page: body only
         s = open(os.path.join(OUT, "index.html"), encoding="utf-8").read()
         s = re.sub(r"^<!doctype html>.*?<head>\s*<meta charset=\"utf-8\">\s*<meta name=\"viewport\"[^>]*>\s*", "", s, flags=re.S)
