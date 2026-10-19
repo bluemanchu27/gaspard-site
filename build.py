@@ -192,16 +192,15 @@ def sign_svg():
     outer = "M409 146 L619 168.5 L619 274.5 L408 256.5 Z"
     inner = "M418.75 150 L616.25 171.25 L616.25 268.75 L417.5 252.5 Z"
     return ('<svg class="sign" viewBox="0 0 949 924" aria-hidden="true" focusable="false">'
-            '<defs><filter id="glow" x="-60%" y="-80%" width="220%" height="260%"><feGaussianBlur stdDeviation="20"/></filter>'
-            '<filter id="glow2" x="-30%" y="-40%" width="160%" height="180%"><feGaussianBlur stdDeviation="7"/></filter>'
+            '<defs><filter id="bloom" x="-40%" y="-60%" width="180%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>'
             '<radialGradient id="lampglow"><stop offset="0" stop-color="#FFC24A" stop-opacity="1"/><stop offset=".45" stop-color="#FFD27A" stop-opacity=".75"/>'
             '<stop offset="1" stop-color="#FFE3A6" stop-opacity="0"/></radialGradient></defs>'
-            f'<path class="halo" d="{outer}" filter="url(#glow)"/><path class="halo h2" d="{outer}" filter="url(#glow2)"/>'
-            '<ellipse class="lamp l1" cx="78" cy="150" rx="78" ry="88" fill="url(#lampglow)"/>'
-            '<ellipse class="lamp l2" cx="332" cy="172" rx="70" ry="80" fill="url(#lampglow)"/>'
-            f'<path class="face" d="{inner}"/>'
+            '<g class="lamps"><ellipse class="lamp l1" cx="78" cy="150" rx="78" ry="88" fill="url(#lampglow)"/>'
+            '<ellipse class="lamp l2" cx="332" cy="172" rx="70" ry="80" fill="url(#lampglow)"/></g>'
+            f'<path class="bloom" d="{outer}" filter="url(#bloom)"/>'
+            f'<path class="face dim" d="{inner}"/><path class="face lit" d="{inner}"/>'
             f'<path class="frame f1" pathLength="1" d="{outer}"/><path class="frame f2" pathLength="1" d="{inner}"/>'
-            '<g transform="matrix(0.45 0.04275 -0.0055 0.45 437.26 152.1)">' + "".join(navy) + "".join(red) + '</g></svg>')
+            '<g class="letters" transform="matrix(0.45 0.04275 -0.0055 0.45 437.26 152.1)">' + "".join(navy) + "".join(red) + '</g></svg>')
 
 
 def faq_html():
