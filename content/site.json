@@ -17,5 +17,21 @@
     "scott-gaspard"
   ],
   "company_story": "A real estate company with local roots going back to 1979. We are a collection of some of south Louisiana’s most experienced agents, helping people buy and sell homes for decades. Different styles, one office, and the same care for every client.",
-  "idx_embed": ""
+  "idx_embed": "",
+  "site_url": "https://gaspardandcorealestate.com",
+  "postal_code": "",
+  "opening_hours": [
+    "Mo-Fr 08:00-18:00"
+  ],
+  "area_served": [
+    "East Baton Rouge Parish",
+    "West Baton Rouge Parish",
+    "Ascension Parish",
+    "Livingston Parish",
+    "West Feliciana Parish",
+    "East Feliciana Parish",
+    "St. Tammany Parish",
+    "Tangipahoa Parish"
+  ],
+  "same_as": []
 }

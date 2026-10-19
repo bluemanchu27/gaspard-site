@@ -87,6 +87,52 @@ def img(src):
 
 
 # ---------------------------------------------------------------- shared parts
+BASE = (SITE.get("site_url") or "https://gaspardandcorealestate.com").rstrip("/")
+ORG_ID = BASE + "/#organization"
+
+
+def ld_script(data):
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + '</script>'
+
+
+def org_ld():
+    street, _, rest = SITE["address"].partition(",")
+    parts = [x.strip() for x in rest.split(",")]
+    addr = {"@type": "PostalAddress", "streetAddress": street.strip(),
+            "addressLocality": parts[0] if parts else "", "addressRegion": parts[1] if len(parts) > 1 else "LA",
+            "addressCountry": "US"}
+    if SITE.get("postal_code"):
+        addr["postalCode"] = SITE["postal_code"]
+    org = {"@context": "https://schema.org", "@type": "RealEstateAgent", "@id": ORG_ID,
+           "name": SITE["company"], "legalName": SITE.get("legal_name", ""), "url": BASE + "/",
+           "logo": BASE + "/img/logo.svg", "image": BASE + "/img/office-sketch.jpg",
+           "telephone": "+1-" + SITE["office_phone"], "email": SITE["office_email"], "address": addr,
+           "foundingDate": "1979",
+           "identifier": {"@type": "PropertyValue", "propertyID": "Louisiana Real Estate Commission brokerage license",
+                          "value": SITE.get("brokerage_license", "")},
+           "areaServed": [{"@type": "AdministrativeArea", "name": n} for n in SITE.get("area_served", [])]}
+    if SITE.get("opening_hours"):
+        org["openingHours"] = SITE["opening_hours"]
+    if SITE.get("same_as"):
+        org["sameAs"] = SITE["same_as"]
+    return ld_script(org)
+
+
+def agent_ld(a):
+    slug = a["slug"]
+    p = {"@context": "https://schema.org", "@type": "Person", "name": a["name"],
+         "jobTitle": "Owner and REALTOR®" if slug == "scott-gaspard" else "REALTOR®",
+         "url": f"{BASE}/agents/{slug}/", "image": BASE + (a.get("page_photo") or a["photo"]),
+         "worksFor": {"@type": "RealEstateAgent", "@id": ORG_ID, "name": SITE["company"]},
+         "telephone": "+1-" + (a.get("mobile") or SITE["office_phone"])}
+    if a.get("email"):
+        p["email"] = a["email"]
+    links = [l["url"] for l in a.get("review_links", []) if l.get("url", "").strip()]
+    if links:
+        p["sameAs"] = links
+    return ld_script(p)
+
+
 def head(title, desc):
     return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
@@ -169,7 +215,7 @@ def home():
           + "".join(card(a) for a in preview) +
           f'</div><p style="margin:32px 0 0"><a class="arrow" href="{page_url("agents")}">Meet all of our agents</a></p></section></div>'
           '<section class="about" aria-labelledby="ab"><div class="wrap"><div class="inner"><span class="eyebrow">About the company</span>'
-          f'<h2 id="ab">{COMPANY}</h2><p>{esc(SITE["company_story"])}</p></div></div></section>' + faq_html() + '</main>\n')
+          f'<h2 id="ab">{COMPANY}</h2><p>{esc(SITE["company_story"])}</p></div></div></section>' + faq_html() + org_ld() + '</main>\n')
     return s + footer() + tail()
 
 
@@ -246,7 +292,7 @@ def agent_page(a):
           f'<article class="agent"><div class="photo"><img src="{img(photo)}" alt="{name}"></div>'
           f'<div class="info"><span class="eyebrow">{esc(team) if team else "REALTOR®"}</span><h1>{name}</h1>'
           f'<a class="call" href="tel:{digits(callnum)}">Call {esc(callnum)}</a>'
-          f'<div class="meta">{rows}</div><div class="bio">{bio}</div>{reviews_html(a)}</div></article></div></main>\n')
+          f'<div class="meta">{rows}</div><div class="bio">{bio}</div>{reviews_html(a)}</div></article></div>' + agent_ld(a) + '</main>\n')
     return s + footer() + tail()
 
 
@@ -275,7 +321,7 @@ def about_page():
           '<p class="err" id="cc-err" hidden>Please add your name and phone number.</p>'
           '<button type="submit">Send message</button></form>'
           '<script>(function(){var f=document.getElementById("cc");f.addEventListener("submit",function(e){var ok=["cc-name","cc-phone"].every(function(i){return document.getElementById(i).value.trim()!==""});document.getElementById("cc-err").hidden=ok;if(!ok)e.preventDefault();});})();</script>'
-          '</section></div></main>\n')
+          '</section></div>' + org_ld() + '</main>\n')
     return s + footer() + tail()
 
 
