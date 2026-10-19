@@ -58,7 +58,7 @@ for fn in sorted(os.listdir(os.path.join(CONTENT, "teams"))):
     if fn.endswith(".json"):
         t = load(os.path.join(CONTENT, "teams", fn))
         t["slug"] = fn[:-5]
-        t["members"] = [a for a in AGENTS if a.get("team") == t["slug"]]
+        t["members"] = sorted([a for a in AGENTS if a.get("team") == t["slug"]], key=lambda a: (not a.get("team_lead"), last_first(a["name"])))  # team lead first, then A-Z
         TEAMS.append(t)
 TEAMS.sort(key=lambda t: t.get("order", 99))
 TEAM_NAME = {t["slug"]: t["name"] for t in TEAMS}
