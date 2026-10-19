@@ -127,9 +127,11 @@ footer.site .fine{font-size:12px;color:var(--muted);line-height:1.6;max-width:70
 /* Animated sign on the office sketch (home page) */
 .sketch-wrap{position:relative;width:100%}
 .sketch-wrap .sketch{display:block}
-.sign{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.sign .halo{fill:#FFDA80;opacity:0;animation:sign-glow 1.1s ease-out 2.3s forwards}
-.sign .face{fill:#FFFDF7;opacity:0;animation:sign-fade .6s ease-out 2.1s forwards}
+.sign{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;mix-blend-mode:multiply}
+.sign .halo{fill:#FFBE45;opacity:0;animation:sign-glow 1.2s ease-out 2.2s forwards}
+.sign .lamp{opacity:0;animation:sign-glow 1.2s ease-out 2.9s forwards}
+.sign .l2{animation-delay:3.15s}
+.sign .face{fill:#FFF9EC;opacity:0;animation:sign-fade .6s ease-out 2.1s forwards}
 .sign .frame{fill:none;stroke:#011E60;stroke-linejoin:round;stroke-dasharray:1 1;stroke-dashoffset:1;animation:sign-draw .9s ease-in-out .2s forwards}
 .sign .f1{stroke-width:3.2}
 .sign .f2{stroke-width:1.8;animation-delay:.45s}
@@ -142,11 +144,11 @@ footer.site .fine{font-size:12px;color:var(--muted);line-height:1.6;max-width:70
 @keyframes sign-fade{to{opacity:1}}
 @keyframes sign-glow{0%{opacity:0}60%{opacity:1}100%{opacity:.85}}
 .sign-seen .sign *,.sign-seen .sign{animation:none!important}
-.sign-seen .sign .halo{opacity:.85}.sign-seen .sign .face{opacity:1}
+.sign-seen .sign .halo,.sign-seen .sign .lamp{opacity:.85}.sign-seen .sign .face{opacity:1}
 .sign-seen .sign .frame{stroke-dashoffset:0}
 .sign-seen .sign .ln{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}
 @media (prefers-reduced-motion: reduce){
   .sign *{animation:none!important}
-  .sign .halo{opacity:.85}.sign .face{opacity:1}.sign .frame{stroke-dashoffset:0}
+  .sign .halo,.sign .lamp{opacity:.85}.sign .face{opacity:1}.sign .frame{stroke-dashoffset:0}
   .sign .ln{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}
 }
