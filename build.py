@@ -102,7 +102,7 @@ def header(current):
     search = nav("search", "Search", "search") if SITE.get("idx_embed", "").strip() else ""
     return (f'<header class="site"><div class="wrap"><a class="logo" href="{page_url("")}">'
             f'<img src="{img("/img/logo.svg")}" alt="{COMPANY}" width="360" height="223"></a>'
-            f'<nav aria-label="Main">{search}{nav("agents", "Agents", "agents")}{nav("about", "About", "about")}'
+            f'<nav aria-label="Main">{search}{nav("agents", "Agents", "agents")}{nav("about", "About", "about")}<a href="{page_url("")}#faq">FAQ</a>'
             f'<a href="tel:{digits(SITE["office_phone"])}">Call</a></nav></div></header>\n')
 
 
