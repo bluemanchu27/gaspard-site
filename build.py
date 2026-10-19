@@ -435,7 +435,18 @@ def inline_assets(s):
     return s
 
 
+def use_webp(s):
+    """Point <img> tags at the smaller .webp copy of a photo when one exists."""
+    def rep(m):
+        name = m.group(3)
+        if os.path.exists(os.path.join(STATIC, "img", name + ".webp")):
+            return f'{m.group(1)}{m.group(2)}{name}.webp"'
+        return m.group(0)
+    return re.sub(r'(src=")([^"]*?img/)([^"/]+)\.jpe?g"', rep, s)
+
+
 def write(path, s):
+    s = use_webp(s)
     if PREVIEW:
         if path.endswith("/index.html"):
             path = path[:-len("/index.html")].replace("/", "--") + ".html"
