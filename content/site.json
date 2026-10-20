@@ -33,5 +33,6 @@
     "St. Tammany Parish",
     "Tangipahoa Parish"
   ],
-  "same_as": []
+  "same_as": [],
+  "home_show_all": true
 }

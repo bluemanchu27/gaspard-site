@@ -227,7 +227,8 @@ def faq_html():
 
 
 def home():
-    preview = [BY_SLUG[s] for s in SITE.get("home_preview", []) if s in BY_SLUG]
+    # All agents, A-Z (Scott, 20 Oct 2026: nobody left out). Set "home_preview" in site.json to show a hand-picked list instead.
+    preview = AGENTS if SITE.get("home_show_all", True) else [BY_SLUG[x] for x in SITE.get("home_preview", []) if x in BY_SLUG]
     s = head(COMPANY, f"{COMPANY}, a real estate company with local roots going back to 1979.")
     s += header("home")
     s += ('<main><div class="wrap"><section class="hero">'
@@ -240,7 +241,7 @@ def home():
           f'<span style="font-weight:400;font-size:14px;opacity:.9">Call {OFFICE}</span></a>'
           f'<a class="arrow" href="{page_url("agents")}">See our agents</a></div></div></section>'
           f'<section class="block rule" aria-labelledby="ag"><div class="head"><h2 id="ag">Our agents</h2><a class="arrow" href="{page_url("agents")}">See all</a></div>'
-          '<div class="grid wide" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">'
+          '<div class="grid all">'
           + "".join(card(a) for a in preview) +
           f'</div><p style="margin:32px 0 0"><a class="arrow" href="{page_url("agents")}">Meet all of our agents</a></p></section></div>'
           '<section class="about" aria-labelledby="ab"><div class="wrap"><div class="inner"><span class="eyebrow">About the company</span>'

@@ -149,6 +149,10 @@ footer.site .fine{font-size:12px;color:var(--muted);line-height:1.6;max-width:70
   .sign *{animation:none!important}
   .sign .lamp{opacity:.6}.sign .shade{opacity:0}.sign .bloom{opacity:1}
 }
-  .sign .lamp{opacity:.6}.sign .bloom{opacity:.85}.sign .face{opacity:1}.sign .frame{stroke-dashoffset:0}
-  .sign .ln{stroke-dashoffset:0;fill-opacity:1;stroke-opacity:0}
-}
+
+/* Home page: all agents, compact grid (3 across on phones, up to 6 on wide screens) */
+.grid.all{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 12px}
+@media (min-width:640px){.grid.all{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:980px){.grid.all{grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 16px}}
+.grid.all .person .nm{font-size:15px;padding-top:6px}
+@media (min-width:980px){.grid.all .person .nm{font-size:17px}}
