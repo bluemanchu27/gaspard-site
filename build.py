@@ -447,8 +447,27 @@ def use_webp(s):
     return re.sub(r'(src=")([^"]*?img/)([^"/]+)\.jpe?g"', rep, s)
 
 
+_VER = {}
+
+
+def add_versions(s):
+    """Add ?v=<content hash> to image URLs so browsers fetch a photo again as soon as it changes."""
+    import hashlib
+    def rep(m):
+        name = m.group(3)
+        f = os.path.join(STATIC, "img", name)
+        if not os.path.exists(f):
+            return m.group(0)
+        if name not in _VER:
+            _VER[name] = hashlib.md5(open(f, "rb").read()).hexdigest()[:8]
+        return f'{m.group(1)}{m.group(2)}{name}?v={_VER[name]}"'
+    return re.sub(r'((?:src|href)=")(/img/)([^"?/]+)"', rep, s)
+
+
 def write(path, s):
     s = use_webp(s)
+    if not PREVIEW:
+        s = add_versions(s)
     if PREVIEW:
         if path.endswith("/index.html"):
             path = path[:-len("/index.html")].replace("/", "--") + ".html"
