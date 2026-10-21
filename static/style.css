@@ -156,3 +156,7 @@ footer.site .fine{font-size:12px;color:var(--muted);line-height:1.6;max-width:70
 @media (min-width:980px){.grid.all{grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 16px}}
 .grid.all .person .nm{font-size:15px;padding-top:6px}
 @media (min-width:980px){.grid.all .person .nm{font-size:17px}}
+.areas{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--line)}
+.areas li{display:flex;flex-direction:column;gap:2px;padding-block:12px;border-bottom:1px solid var(--line)}
+.areas strong{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--ink)}
+.areas span{font-size:16px}

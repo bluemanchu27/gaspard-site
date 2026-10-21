@@ -25,14 +25,78 @@
   ],
   "area_served": [
     "East Baton Rouge Parish",
-    "West Baton Rouge Parish",
-    "Ascension Parish",
     "Livingston Parish",
-    "West Feliciana Parish",
+    "Ascension Parish",
+    "West Baton Rouge Parish",
+    "Iberville Parish",
     "East Feliciana Parish",
-    "St. Tammany Parish",
-    "Tangipahoa Parish"
+    "St. Tammany Parish"
   ],
   "same_as": [],
-  "home_show_all": true
+  "home_show_all": true,
+  "service_areas": [
+    {
+      "parish": "East Baton Rouge Parish",
+      "towns": [
+        "Baton Rouge",
+        "Central",
+        "Zachary",
+        "Baker"
+      ]
+    },
+    {
+      "parish": "Livingston Parish",
+      "towns": [
+        "Denham Springs",
+        "Walker",
+        "Livingston",
+        "Watson",
+        "Albany",
+        "Springfield",
+        "French Settlement",
+        "Maurepas"
+      ]
+    },
+    {
+      "parish": "Ascension Parish",
+      "towns": [
+        "Prairieville",
+        "Gonzales",
+        "Geismar",
+        "Sorrento",
+        "Donaldsonville"
+      ]
+    },
+    {
+      "parish": "West Baton Rouge Parish",
+      "towns": [
+        "Port Allen",
+        "Brusly",
+        "Addis"
+      ]
+    },
+    {
+      "parish": "Iberville Parish",
+      "towns": [
+        "St. Gabriel"
+      ]
+    },
+    {
+      "parish": "East Feliciana Parish",
+      "towns": [
+        "Clinton",
+        "Slaughter",
+        "Ethel"
+      ]
+    },
+    {
+      "parish": "St. Tammany Parish",
+      "towns": [
+        "Covington",
+        "Mandeville",
+        "Madisonville"
+      ]
+    }
+  ],
+  "areas_intro": "Gaspard & Co Real Estate helps buyers and sellers in seven Louisiana parishes: East Baton Rouge, Livingston, Ascension, West Baton Rouge, Iberville, East Feliciana and St. Tammany."
 }

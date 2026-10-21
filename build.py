@@ -96,6 +96,39 @@ def ld_script(data):
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + '</script>'
 
 
+LOUISIANA = {"@type": "State", "name": "Louisiana", "containedInPlace": {"@type": "Country", "name": "United States"}}
+
+
+def area_ld():
+    """Parishes and towns served, each town tied to its parish so same-named places elsewhere can't be confused."""
+    groups = SITE.get("service_areas") or [{"parish": n, "towns": []} for n in SITE.get("area_served", [])]
+    out = []
+    for g in groups:
+        parish = {"@type": "AdministrativeArea", "name": g["parish"] + ", Louisiana", "containedInPlace": LOUISIANA}
+        out.append(parish)
+        for t in g.get("towns", []):
+            out.append({"@type": "City", "name": t + ", Louisiana",
+                        "containedInPlace": {"@type": "AdministrativeArea", "name": g["parish"] + ", Louisiana"}})
+    return out
+
+
+def parishes_sentence():
+    names = [g["parish"].replace(" Parish", "") for g in SITE.get("service_areas", [])]
+    if not names:
+        return ""
+    return (", ".join(names[:-1]) + " and " + names[-1]) if len(names) > 1 else names[0]
+
+
+def areas_html():
+    groups = SITE.get("service_areas", [])
+    if not groups:
+        return ""
+    rows = "".join(f'<li><strong>{esc(g["parish"])}</strong><span>{esc(", ".join(g["towns"]))}</span></li>' for g in groups)
+    return ('<section class="block rule" style="max-width:720px" id="areas" aria-labelledby="ar"><h2 id="ar" style="font-size:32px">Areas we serve</h2>'
+            f'<p class="lede" style="font-size:17px">{esc(SITE.get("areas_intro", ""))}</p>'
+            f'<ul class="areas">{rows}</ul></section>')
+
+
 def org_ld():
     street, _, rest = SITE["address"].partition(",")
     parts = [x.strip() for x in rest.split(",")]
@@ -111,7 +144,7 @@ def org_ld():
            "foundingDate": "1979",
            "identifier": {"@type": "PropertyValue", "propertyID": "Louisiana Real Estate Commission brokerage license",
                           "value": SITE.get("brokerage_license", "")},
-           "areaServed": [{"@type": "AdministrativeArea", "name": n} for n in SITE.get("area_served", [])]}
+           "areaServed": area_ld()}
     if SITE.get("opening_hours"):
         org["openingHours"] = SITE["opening_hours"]
     if SITE.get("same_as"):
@@ -159,7 +192,8 @@ def footer():
             f'<div class="cols"><div><strong style="font-weight:600;color:var(--ink)">Office</strong><a href="tel:{digits(SITE["office_phone"])}">{OFFICE}</a></div>'
             f'<div><strong style="font-weight:600;color:var(--ink)">Email</strong><a href="mailto:{email}" style="overflow-wrap:anywhere">{email}</a></div>'
             f'<div><strong style="font-weight:600;color:var(--ink)">Address</strong><span>{esc(FULL_ADDRESS)}</span></div></div>'
-            f'<p class="fine">{esc(SITE["legal_name"])}. Licensed by the Louisiana Real Estate Commission, brokerage license {esc(SITE["brokerage_license"])}. '
+            + (f'<p class="fine" style="color:var(--body)">Serving {esc(parishes_sentence())} parishes, Louisiana.</p>' if SITE.get("service_areas") else '')
+            + f'<p class="fine">{esc(SITE["legal_name"])}. Licensed by the Louisiana Real Estate Commission, brokerage license {esc(SITE["brokerage_license"])}. '
             'Equal Housing Opportunity.</p></div></footer>\n')
 
 
@@ -331,7 +365,7 @@ def about_page():
     s += header("about")
     s += ('<main><div class="wrap"><section class="block" style="max-width:720px"><span class="eyebrow">About the company</span>'
           f'<h1 style="font-size:clamp(40px,6vw,60px);margin-top:12px">{COMPANY}</h1>'
-          f'<p class="lede" style="font-size:20px;line-height:1.7;margin-top:22px">{esc(SITE["company_story"])}</p></section>'
+          f'<p class="lede" style="font-size:20px;line-height:1.7;margin-top:22px">{esc(SITE["company_story"])}</p></section>' + areas_html() +
           '<section class="block rule" style="max-width:720px"><h2 style="font-size:32px">Visit or call</h2>'
           '<div class="agent" style="padding:20px 0 0;display:block"><div class="meta">'
           f'<div><span>Office</span><span>{esc(FULL_ADDRESS)}</span></div>'
