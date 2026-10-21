@@ -420,7 +420,7 @@ def landing_page():
     tpl = open(os.path.join(ROOT, "templates", "gaspard-team.html"), encoding="utf-8").read()
     quotes = [r for r in L.get("reviews", []) if r.get("quote", "").strip()]
     if quotes:
-        rv = "".join(f'<blockquote><p>{esc(r["quote"])}</p><footer>{esc(r.get("client", ""))}'
+        rv = "".join(f'<blockquote{" style=\"grid-column:1/-1\"" if r.get("wide") else ""}><p>{esc(r["quote"])}</p><footer>{esc(r.get("client", ""))}'
                      + (f' · {esc(r["detail"])}' if r.get("detail") else '') + '</footer></blockquote>' for r in quotes)
     else:
         rv = ""

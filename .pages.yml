@@ -117,6 +117,9 @@ content:
           - name: detail
             label: Detail (for example "Sold in Denham Springs, 2025")
             type: string
+          - name: wide
+            label: Show full width
+            type: boolean
       - name: zillow_url
         label: Zillow reviews link
         type: string

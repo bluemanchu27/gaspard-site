@@ -1,7 +1,34 @@
 {
   "cell": "225-337-4663",
   "rating_line": "5-star rated on Zillow and Google, from 350+ reviews",
-  "reviews": [],
+  "reviews": [
+    {
+      "quote": "“I’m a commercial real estate broker. I could represent myself in buying a home (and have). I’ve always chosen to use Scott to sell any home I’ve ever sold, and time and time again Scott has delivered extraordinary service and has given me advice that helped me come out ahead financially. In the times where it mattered (negotiation, offer price, inspection response, etc.), Scott’s experience in having sold hundreds of homes would shine.”",
+      "client": "The Labordes",
+      "detail": "Buyers & Sellers"
+    },
+    {
+      "quote": "“Scott’s successful experience, expansive expertise, communication skills, and practical advice were invaluable throughout every phase of the process. He guided us throughout the process, ultimately allowing us to make final decisions without feeling pressured. He somehow was able to make what could be a stressful and trying experience one that was surprisingly enjoyable!”",
+      "client": "The Exners",
+      "detail": "Sellers"
+    },
+    {
+      "quote": "“We have worked with Robin for several years now. She has always been responsive, even if a great amount of time had passed, she was right there answering any question we had. She helped us with a purchase remotely as we were moving from a different state. She also has helped my parents. We will continue to work with Robin for all our real estate needs and highly recommend her services.”",
+      "client": "Relocating Buyers",
+      "detail": "Worked with Robin Gaspard",
+      "wide": true
+    },
+    {
+      "quote": "“As I relocated in a hurry to join a new position on the West coast, I left all my belongings in the house. Scott had the house cleaned, he arranged the furniture in a presentable manner, took wonderful photos, and listed it for sale within 2 days. When the home needed minor repairs during the due diligence period, he took care finding the right people and getting the work done immediately. My entire experience with Scott as my realtor has been absolutely wonderful.”",
+      "client": "Kishore G.",
+      "detail": "Seller"
+    },
+    {
+      "quote": "“He knows Baton Rouge, always responds quickly, knows his stuff when it comes to different neighborhoods, the market, etc, and is just an awesome person with integrity and honesty. We’ve used him to buy both of our houses, and I really can’t recommend him enough!”",
+      "client": "The Elworths",
+      "detail": "Buyers & Sellers"
+    }
+  ],
   "zillow_url": "https://www.zillow.com/profile/Scott452/",
   "google_url": "https://www.google.com/search?q=scott+gaspard+%3A+gaspard+%26+co+real+estate+baton+rouge+reviews",
   "headline": "See why clients choose The Gaspard Team.",
