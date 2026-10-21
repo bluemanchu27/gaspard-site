@@ -7,6 +7,12 @@
   "mobile": "225-963-5000",
   "email": "robingaspard@gmail.com",
   "bio": "",
-  "reviews": [],
+  "reviews": [
+    {
+      "quote": "We have worked with Robin for several years now. She has always been responsive, even if a great amount of time had passed, she was right there answering any question we had. She helped us with a purchase remotely as we were moving from a different state. She also has helped my parents. We both have had different needs for our home and she was able to advise and find the best match for our needs. We will continue to work with Robin for all our real estate needs and highly recommend her services.",
+      "client": "",
+      "detail": ""
+    }
+  ],
   "review_links": []
 }
