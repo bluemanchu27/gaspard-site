@@ -28,5 +28,63 @@
   "google_url": "https://www.google.com/search?q=scott+gaspard+%3A+gaspard+%26+co+real+estate+baton+rouge+reviews",
   "headline": "See why clients choose The Gaspard Team.",
   "intro": "Whether you're buying, selling, or just have questions, we'll walk you through every step, from the first conversation to closing day.",
-  "video_url": ""
+  "video_url": "",
+  "why": {
+    "heading": "Why clients choose The Gaspard Team",
+    "intro": "Clients have left The Gaspard Team 269 reviews on Zillow, with a 5.0 average, from 2014 to 2026. The words they use most are knowledgeable, attentive and experienced. These are the things they come back to.",
+    "source": "Zillow, as of October 2026.",
+    "blocks": [
+      {
+        "heading": "They come back, and they send their families",
+        "text": "Many of our clients have worked with us for 10, 15, even 25 years, through first homes, moves up and their parents' homes. The team's roots go back to 1979, when Linda Gaspard was first licensed; Scott joined her in 1998.",
+        "quote": "Scott has been our realtor for over 13 years.",
+        "client": "K.C.",
+        "place": "Shenandoah",
+        "year": "2021"
+      },
+      {
+        "heading": "They know Baton Rouge, neighborhood by neighborhood",
+        "text": "Which streets sell fast, what a price point buys in each part of town, and what's changing nearby. That comes from 3,000+ homes sold* across greater Baton Rouge.",
+        "quote": "He knows Baton Rouge… knows his stuff when it comes to different neighborhoods.",
+        "client": "A.M.E.",
+        "place": "City Park",
+        "year": "2025"
+      },
+      {
+        "heading": "You'll always hear back",
+        "text": "Calls and texts get answered, evenings and Saturdays too. If one of us is out of town, you'll know who's covering.",
+        "quote": "very responsive, communicative and helpful.",
+        "client": "S.M.",
+        "place": "Southside",
+        "year": "2025"
+      },
+      {
+        "heading": "Straight advice, and no pressure",
+        "text": "An honest read on price, a clear plan, and the final call is always yours. Sometimes that advice is \"walk away.\"",
+        "quote": "honest, non sugar-coated advice when we needed it.",
+        "client": "K.B.",
+        "place": "Nicholson",
+        "year": "2020"
+      },
+      {
+        "heading": "We handle it when you can't be there",
+        "text": "Relocating, settling a parent's estate, or selling from out of state, we take care of cleaning, repairs, photos and showings, and keep you posted from wherever you are.",
+        "quote": "He had everything covered even after we had left.",
+        "client": "K.H.",
+        "place": "Sherwood Forest",
+        "year": "2025"
+      },
+      {
+        "heading": "We know the right people",
+        "text": "Inspectors, contractors, roofers, lenders: after decades in Baton Rouge we know who does good work and shows up.",
+        "quote": "He has an extensive network of Contractors and Vendors.",
+        "client": "B.F.",
+        "place": "Highland-Perkins",
+        "year": "2021"
+      }
+    ],
+    "cta_lead": "Thinking about selling?",
+    "cta_link": "Find out what your home is worth.",
+    "footnote": "*\"Homes sold\" counts each buyer and seller client represented."
+  }
 }

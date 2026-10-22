@@ -49,6 +49,20 @@ section{padding-block:56px}
 .help div{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:10px}
 .help h3{font-size:26px}
 .help ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.why-intro{margin:14px 0 0;font-size:19px;max-width:52ch;color:var(--body)}
+.why-src{margin:8px 0 0;font-size:13px;color:var(--muted)}
+.why{display:grid;gap:36px 32px;margin-top:36px}
+@media (min-width:760px){.why{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.why{grid-template-columns:1fr 1fr 1fr}}
+.why-item{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.why-n{font-size:12px;font-weight:500;letter-spacing:.18em;color:var(--muted)}
+.why-item h3{font-size:24px}
+.why-item>p{margin:0;font-size:16px}
+.why-item blockquote{margin-top:6px}
+.why-item blockquote p{font-size:18px}
+.why-cta{margin:40px 0 0;padding-top:22px;border-top:1px solid var(--line);font-family:var(--serif);font-size:24px;color:var(--ink);line-height:1.35}
+.why-cta a{color:var(--red);text-underline-offset:4px;text-decoration-thickness:1.5px}
+.why-cta a:hover{color:var(--red-dark)}
 .reviews{display:grid;gap:22px;margin-top:28px}
 @media (min-width:760px){.reviews{grid-template-columns:1fr 1fr}}
 blockquote{margin:0;padding-left:20px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:10px}
@@ -99,7 +113,9 @@ footer.site .wrap{padding-block:32px 40px;display:flex;flex-direction:column;gap
     </div>
   </section>
 
-  <nav class="jump" aria-label="On this page"><a href="#team">Meet us</a><a href="#help">How we help</a><a href="#contact">Contact</a><a href="#value">Home value</a></nav>
+  <nav class="jump" aria-label="On this page"><a href="#why">Why us</a><a href="#team">Meet us</a><a href="#help">How we help</a><a href="#contact">Contact</a><a href="#value">Home value</a></nav>
+
+  {{WHY}}
 
   <section id="team" class="rule" aria-labelledby="t">
     <span class="eyebrow">Meet the team</span>

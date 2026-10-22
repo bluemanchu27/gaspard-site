@@ -434,7 +434,26 @@ def landing_page():
         role = "Team lead" if a.get("team_lead") else "REALTOR®"
         people += (f'<figure><img src="{img(a["photo"])}" alt="{esc(a["name"])}"><figcaption>'
                    f'<div class="nm">{esc(a["name"])}</div><div class="rl">{role}</div></figcaption></figure>')
+    why = ""
+    W = L.get("why") or {}
+    if W.get("blocks"):
+        items = ""
+        for i, w in enumerate(W["blocks"], 1):
+            q = ""
+            if w.get("quote", "").strip():
+                cite = " · ".join(esc(x) for x in (w.get("client", ""), w.get("place", ""), w.get("year", "")) if x)
+                q = f'<blockquote><p>“{esc(w["quote"])}”</p><footer>{cite}</footer></blockquote>'
+            items += (f'<div class="why-item"><span class="why-n" aria-hidden="true">{i:02d}</span>'
+                      f'<h3>{esc(w["heading"])}</h3><p>{esc(w.get("text", ""))}</p>{q}</div>')
+        why = (f'<section id="why" class="rule" aria-labelledby="wy"><span class="eyebrow">In our clients\' words</span>'
+               f'<h2 id="wy" style="font-size:clamp(30px,4vw,40px);margin-top:10px">{esc(W.get("heading", ""))}</h2>'
+               f'<p class="why-intro">{esc(W.get("intro", ""))}</p>'
+               f'<p class="why-src"><span aria-hidden="true" style="letter-spacing:2px;color:var(--ink)">★★★★★</span> {esc(W.get("source", ""))}</p>'
+               f'<div class="why">{items}</div>'
+               f'<p class="why-cta">{esc(W.get("cta_lead", ""))} <a href="#value">{esc(W.get("cta_link", ""))}</a></p>'
+               f'<p class="fine" style="margin:14px 0 0">{esc(W.get("footnote", ""))}</p></section>')
     rep = {
+        "{{WHY}}": why,
         "{{CELL}}": digits(L["cell"]),
         "{{RATING}}": esc(L.get("rating_line", "")),
         "{{REVIEWS}}": rv,
