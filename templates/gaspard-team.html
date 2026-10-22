@@ -146,6 +146,17 @@ footer.site .wrap{padding-block:32px 40px;display:flex;flex-direction:column;gap
     <span class="eyebrow">Get in touch</span>
     <h2 style="font-size:clamp(30px,4vw,40px);margin-top:10px">Let's talk about your move</h2>
     <div class="grid">
+      <form id="value" name="home-value" method="POST" action="{{THANKS}}" data-netlify="true" netlify-honeypot="company" novalidate>
+        <input type="hidden" name="form-name" value="home-value">
+        <label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>
+        <h3>What's my home worth?</h3>
+        <p class="sub">Get a free price estimate from a local agent, not an online guess.</p>
+        <label for="v-addr">Home address<input id="v-addr" name="address" autocomplete="street-address" placeholder="123 Oak St, Denham Springs"></label>
+        <label for="v-name">Name<input id="v-name" name="name" autocomplete="name" placeholder="Jane Smith"></label>
+        <label for="v-phone">Phone<input id="v-phone" name="phone" type="tel" autocomplete="tel" placeholder="225-555-0123"></label>
+        <span class="err" id="v-err" hidden>Enter the address, your name and your phone number.</span>
+        <button type="submit">Get my home value</button>
+      </form>
       <form id="contact" name="gaspard-team-contact" method="POST" action="{{THANKS}}" data-netlify="true" netlify-honeypot="company" novalidate>
         <input type="hidden" name="form-name" value="gaspard-team-contact">
         <label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>
@@ -157,17 +168,6 @@ footer.site .wrap{padding-block:32px 40px;display:flex;flex-direction:column;gap
         <label for="c-msg">Anything we should know?<textarea id="c-msg" name="message" placeholder="Timing, neighborhood, questions"></textarea></label>
         <span class="err" id="c-err" hidden>Enter your name and phone number so we can reach you.</span>
         <button type="submit">Send</button>
-      </form>
-      <form id="value" name="home-value" method="POST" action="{{THANKS}}" data-netlify="true" netlify-honeypot="company" novalidate>
-        <input type="hidden" name="form-name" value="home-value">
-        <label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>
-        <h3>What's my home worth?</h3>
-        <p class="sub">Get a free price estimate from a local agent, not an online guess.</p>
-        <label for="v-addr">Home address<input id="v-addr" name="address" autocomplete="street-address" placeholder="123 Oak St, Denham Springs"></label>
-        <label for="v-name">Name<input id="v-name" name="name" autocomplete="name" placeholder="Jane Smith"></label>
-        <label for="v-phone">Phone<input id="v-phone" name="phone" type="tel" autocomplete="tel" placeholder="225-555-0123"></label>
-        <span class="err" id="v-err" hidden>Enter the address, your name and your phone number.</span>
-        <button type="submit">Get my home value</button>
       </form>
     </div>
   </div>
