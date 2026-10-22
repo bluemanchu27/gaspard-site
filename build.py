@@ -141,7 +141,7 @@ def org_ld():
            "name": SITE["company"], "legalName": SITE.get("legal_name", ""), "url": BASE + "/",
            "logo": BASE + "/img/logo.svg", "image": BASE + "/img/office-sketch.jpg",
            "telephone": "+1-" + SITE["office_phone"], "email": SITE["office_email"], "address": addr,
-           "foundingDate": "1979",
+           "foundingDate": "2026",
            "identifier": {"@type": "PropertyValue", "propertyID": "Louisiana Real Estate Commission brokerage license",
                           "value": SITE.get("brokerage_license", "")},
            "areaServed": area_ld()}
@@ -269,7 +269,7 @@ def home():
           '<div class="sketch-wrap"><script>try{if(sessionStorage.getItem("signSeen"))document.documentElement.classList.add("sign-seen");else sessionStorage.setItem("signSeen","1")}catch(e){}</script>'
           f'<img class="sketch" src="{img("/img/office-sketch-blank.jpg")}" alt="Drawing of the {COMPANY} office on Jones Creek Road, with the Gaspard &amp; Co Real Estate sign" width="949" height="924">'
           + sign_svg() + '</div>'
-          f'<div class="copy"><span class="eyebrow">{esc(SITE["home_eyebrow"])}</span>'
+          f'<div class="copy"><p class="eyebrow tagline">{esc(SITE["home_eyebrow"])}</p>'
           f'<h1>{esc(SITE["home_headline"])}</h1><p>{esc(SITE["home_subline"])}</p>'
           f'<div class="actions"><a class="call" href="tel:{digits(SITE["office_phone"])}">Talk to an agent'
           f'<span style="font-weight:400;font-size:14px;opacity:.9">Call {OFFICE}</span></a>'

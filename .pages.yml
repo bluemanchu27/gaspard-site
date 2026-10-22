@@ -164,7 +164,7 @@ content:
         label: Brokerage license number
         type: string
       - name: home_eyebrow
-        label: Home page small line above headline
+        label: Home page tagline above headline (use 1979 only with "rooted" or "roots"; the company itself was founded in 2026)
         type: string
       - name: home_headline
         label: Home page headline

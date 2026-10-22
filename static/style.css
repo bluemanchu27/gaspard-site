@@ -31,6 +31,8 @@ header.site nav a[aria-current="page"]{border-bottom:1.5px solid var(--ink)}
 .hero .copy{display:flex;flex-direction:column;gap:18px;min-width:0}
 .hero h1{font-size:clamp(40px,6vw,68px)}
 .hero p{margin:0;font-size:19px;max-width:34ch}
+/* Home tagline: family roots line above the H1, brand navy, never paired with numbers */
+.hero p.tagline{font-size:13px;font-weight:600;letter-spacing:.16em;color:var(--navy);max-width:none;line-height:1.4}
 .sketch{width:100%;height:auto}
 @media (min-width:900px){.hero{grid-template-columns:1.05fr 1fr;padding-block:56px 96px}}
 
