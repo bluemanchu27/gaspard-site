@@ -60,6 +60,9 @@ section{padding-block:56px}
 .why-item>p{margin:0;font-size:16px}
 .why-item blockquote{margin-top:6px}
 .why-item blockquote p{font-size:18px}
+.stars{margin:-4px 0 0;font-size:16px!important;color:var(--ink);font-weight:400}
+.why-links{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:32px}
+.why-links .more{margin-top:0}
 .why-cta{margin:40px 0 0;padding-top:22px;border-top:1px solid var(--line);font-family:var(--serif);font-size:24px;color:var(--ink);line-height:1.35}
 .why-cta a{color:var(--red);text-underline-offset:4px;text-decoration-thickness:1.5px}
 .why-cta a:hover{color:var(--red-dark)}
@@ -96,18 +99,11 @@ footer.site .wrap{padding-block:32px 40px;display:flex;flex-direction:column;gap
     <img class="photo" src="{{IMG}}/gaspard-team-color.jpg" alt="Robin Gaspard, Linda Gaspard and Scott Gaspard">
   </section>
 
-  <section id="reviews" aria-labelledby="rv">
-    <span class="eyebrow">Reviews</span>
-    <h2 id="rv" style="font-size:clamp(30px,4vw,40px);margin-top:10px">What Clients Say about The Gaspard Team</h2>
-    <p style="margin:10px 0 0;font-size:18px;color:var(--ink)"><span aria-hidden="true" style="letter-spacing:2px">★★★★★</span> {{RATING}}</p>
-    <div class="reviews">{{REVIEWS}}</div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px 32px"><a class="more" href="{{ZILLOW}}" target="_blank" rel="noopener">Read more reviews on Zillow</a><a class="more" href="{{GOOGLE}}" target="_blank" rel="noopener">Read more reviews on Google</a></div>
-  </section>
-
   <section class="rule intro" aria-labelledby="h">
     <div style="display:flex;flex-direction:column;gap:16px;max-width:680px">
       <span class="eyebrow">The Gaspard Team</span>
       <h1 id="h">{{HEADLINE}}</h1>
+      <p class="stars"><span aria-hidden="true" style="letter-spacing:2px">★★★★★</span> {{RATING}}</p>
       <p>{{INTRO}}</p>
       <div class="btns" style="margin-top:12px"><a class="btn red" href="tel:{{CELL}}">Call us now</a><a class="btn line" href="sms:{{CELL}}">Text us now</a></div>
     </div>

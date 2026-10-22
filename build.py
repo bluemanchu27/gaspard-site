@@ -450,6 +450,7 @@ def landing_page():
                f'<p class="why-intro">{esc(W.get("intro", ""))}</p>'
                f'<p class="why-src"><span aria-hidden="true" style="letter-spacing:2px;color:var(--ink)">★★★★★</span> {esc(W.get("source", ""))}</p>'
                f'<div class="why">{items}</div>'
+               f'<div class="why-links"><a class="more" href="{esc(L.get("zillow_url", ""))}" target="_blank" rel="noopener">Read more reviews on Zillow</a><a class="more" href="{esc(L.get("google_url", ""))}" target="_blank" rel="noopener">Read more reviews on Google</a></div>'
                f'<p class="why-cta">{esc(W.get("cta_lead", ""))} <a href="#value">{esc(W.get("cta_link", ""))}</a></p>'
                f'<p class="fine" style="margin:14px 0 0">{esc(W.get("footnote", ""))}</p></section>')
     rep = {
