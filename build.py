@@ -431,7 +431,7 @@ def landing_page():
     team = next((t for t in TEAMS if t["slug"] == "gaspard-team"), None)
     people = ""
     for a in (team["members"] if team else []):
-        role = "Team lead" if a.get("team_lead") else "REALTOR®"
+        role = "REALTOR® / Team Lead" if a.get("team_lead") else "REALTOR®"
         bio = "".join(f"<p>{esc(x.strip())}</p>" for x in a.get("bio", "").split("\n\n") if x.strip())
         people += (f'<article class="member"><img src="{img(a["photo"])}" alt="{esc(a["name"])}">'
                    f'<div class="mb"><div class="nm">{esc(a["name"])}</div><div class="rl">{role}</div>'
