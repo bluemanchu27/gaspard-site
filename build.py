@@ -315,7 +315,7 @@ def team_page(t):
         cap = esc(t.get("photo_caption", ""))
         s += (f'<div class="team" style="margin-top:28px"><img class="group" src="{img(t["photo"])}" alt="{cap}">'
               + (f'<p class="cap">{cap}, left to right</p>' if cap else '') + '</div>')
-    s += '<div class="grid">' + "".join(card(a, "Team lead" if a.get("team_lead") else "") for a in t["members"]) + '</div></section></div></main>\n'
+    s += '<div class="grid">' + "".join(card(a, "REALTOR® / Team Lead" if a.get("team_lead") else "") for a in t["members"]) + '</div></section></div></main>\n'
     return s + footer() + tail()
 
 
