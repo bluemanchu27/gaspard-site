@@ -319,6 +319,12 @@ def team_page(t):
     return s + footer() + tail()
 
 
+def curly(q):
+    """Wrap a review in curly quotes unless it already has them."""
+    q = q.strip()
+    if q[:1] in "\u201c\"": return q
+    return "\u201c" + q + "\u201d"
+
 def reviews_html(a):
     quotes = [r for r in a.get("reviews", []) if r.get("quote", "").strip()]
     links = [l for l in a.get("review_links", []) if l.get("url", "").strip()]
@@ -329,7 +335,7 @@ def reviews_html(a):
         who = esc(r.get("client", ""))
         if r.get("detail"):
             who += " · " + esc(r["detail"])
-        out += f'<blockquote><p>{esc(r["quote"])}</p><footer>{who}</footer></blockquote>'
+        out += f'<blockquote><p>{esc(curly(r["quote"]))}</p><footer>{who}</footer></blockquote>'
     if links:
         out += '<div class="rlinks">' + "".join(
             f'<a class="arrow" href="{esc(l["url"])}" target="_blank" rel="noopener">{esc(l.get("label") or "Read more reviews")}</a>' for l in links) + '</div>'
