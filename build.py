@@ -1,3 +1,4 @@
+import re
 #!/usr/bin/env python3
 """Builds the Gaspard & Co Real Estate website.
 
@@ -455,7 +456,7 @@ def landing_page():
                       f'<h3>{esc(w["heading"])}</h3><p>{esc(w.get("text", ""))}</p>{q}</div>')
         why = (f'<section id="why" class="rule" aria-labelledby="wy"><span class="eyebrow">In our clients\' words</span>'
                f'<h2 id="wy" style="font-size:clamp(30px,4vw,40px);margin-top:10px">{esc(W.get("heading", ""))}</h2>'
-               f'<p class="why-intro">{esc(W.get("intro", ""))}</p>'
+               f'<p class="why-intro">{re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(W.get("intro", "")))}</p>'
                f'<p class="why-src"><span aria-hidden="true" style="letter-spacing:2px;color:var(--ink)">★★★★★</span> {esc(W.get("source", ""))}</p>'
                f'<div class="why">{items}</div>'
                f'<div class="why-links"><a class="more" href="{esc(L.get("zillow_url", ""))}" target="_blank" rel="noopener">Read more reviews on Zillow</a><a class="more" href="{esc(L.get("google_url", ""))}" target="_blank" rel="noopener">Read more reviews on Google</a></div>'
