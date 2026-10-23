@@ -1,0 +1,46 @@
+{
+  "_note": "Agent portal (members only, at /agent-portal/). Put form files in portal-files/ and list them here. A form with no file shows as 'Coming soon'. Never put signed agreements or anything with one agent's personal terms here: every agent with a login can see this page.",
+  "intro": "Company forms and resources for Gaspard & Co Real Estate agents. Please don't share this page or your login.",
+  "contact": "Missing a form or something out of date? Call or text Scott at 225-337-4663.",
+  "sections": [
+    {
+      "title": "Start here",
+      "items": [
+        {"title": "New agent onboarding checklist", "file": ""},
+        {"title": "Office contacts and who to call", "file": ""}
+      ]
+    },
+    {
+      "title": "Company forms",
+      "items": [
+        {"title": "Referral agreement", "file": ""},
+        {"title": "Compensation schedule (blank template)", "file": ""},
+        {"title": "Independent contractor agreement (blank template)", "file": ""}
+      ]
+    },
+    {
+      "title": "Transaction checklists",
+      "items": [
+        {"title": "Listing checklist", "file": ""},
+        {"title": "Buyer checklist", "file": ""},
+        {"title": "File submission and closing checklist", "file": ""}
+      ]
+    },
+    {
+      "title": "Policies",
+      "items": [
+        {"title": "Office policy manual", "file": ""},
+        {"title": "Advertising and team-name rules", "file": ""},
+        {"title": "Fair housing guidelines", "file": ""}
+      ]
+    },
+    {
+      "title": "Marketing and brand",
+      "items": [
+        {"title": "Gaspard & Co logo files", "file": ""},
+        {"title": "Letterhead and email signature", "file": ""},
+        {"title": "CMA template", "file": ""}
+      ]
+    }
+  ]
+}

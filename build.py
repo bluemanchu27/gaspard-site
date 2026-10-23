@@ -411,6 +411,38 @@ def search_page():
     return s + footer() + tail()
 
 
+# ---------------------------------------------------------------- agent portal (members only)
+PORTAL_PATH = os.path.join(CONTENT, "portal.json")
+PORTAL = load(PORTAL_PATH) if os.path.exists(PORTAL_PATH) else None
+PORTAL_FILES = os.path.join(ROOT, "portal-files")
+# Logins live only in the Netlify environment variable AGENT_PORTAL_LOGINS, never in this repository.
+# Format: one "username:password" pair per agent, separated by spaces.
+PORTAL_LOGINS = " ".join(os.environ.get("AGENT_PORTAL_LOGINS", "").split())
+
+
+def portal_page():
+    p = PORTAL
+    s = head(f"Agent Portal | {COMPANY}", "Members only.")
+    s = s.replace("</head>", '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
+    s += header("")
+    s += ('<main><div class="wrap"><section class="block" style="max-width:820px"><span class="eyebrow">Agents only</span>'
+          '<h1 style="font-size:clamp(40px,6vw,60px);margin-top:12px">Agent portal</h1>'
+          f'<p class="lede">{esc(p.get("intro", ""))}</p></section>')
+    for sec in p.get("sections", []):
+        s += f'<section class="block rule portal" style="max-width:820px"><h2>{esc(sec["title"])}</h2><ul class="formlist">'
+        for it in sec.get("items", []):
+            f = (it.get("file") or "").strip()
+            if f and os.path.exists(os.path.join(PORTAL_FILES, f)):
+                ext = f.rsplit(".", 1)[-1].upper() if "." in f else "FILE"
+                s += (f'<li><a href="{url("agent-portal/files/" + f)}" download>{esc(it["title"])}</a>'
+                      f'<span class="ext">{esc(ext)}</span></li>')
+            else:
+                s += f'<li class="soon"><span>{esc(it["title"])}</span><span class="ext">Coming soon</span></li>'
+        s += '</ul></section>'
+    s += f'<section class="block rule" style="max-width:820px"><p style="margin:0">{esc(p.get("contact", ""))}</p></section></div></main>\n'
+    return s + footer() + tail()
+
+
 def thanks_page():
     s = head(f"Thank you | {COMPANY}", "Thanks for reaching out.")
     s += header("")
@@ -558,13 +590,28 @@ def main():
         write(f"teams/{t['slug']}/index.html", team_page(t))
     for a in AGENTS:
         write(f"agents/{a['slug']}/index.html", agent_page(a))
+    if PORTAL and PREVIEW:
+        write("agent-portal/index.html", portal_page())
+    elif PORTAL and PORTAL_LOGINS:  # live site: publish the portal only when the logins are set, so it is never open to the public
+        write("agent-portal/index.html", portal_page())
+        files = os.path.join(OUT, "agent-portal", "files")
+        os.makedirs(files, exist_ok=True)
+        for fn in os.listdir(PORTAL_FILES):
+            if fn != "README.md" and os.path.isfile(os.path.join(PORTAL_FILES, fn)):
+                shutil.copy2(os.path.join(PORTAL_FILES, fn), files)
+        rule = f"  Basic-Auth: {PORTAL_LOGINS}\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: private, no-store\n"
+        with open(os.path.join(OUT, "_headers"), "a", encoding="utf-8") as h:
+            h.write(f"/agent-portal\n{rule}/agent-portal/\n{rule}/agent-portal/*\n{rule}")
+        print(f"Agent portal published with {len(PORTAL_LOGINS.split())} logins")
+    elif PORTAL:
+        print("Agent portal skipped: AGENT_PORTAL_LOGINS is not set in Netlify")
     if not PREVIEW:  # help search engines find every page
         base = SITE.get("site_url", "https://gaspardandcorealestate.com").rstrip("/")
         paths = ["", "agents/", "about/", "search/", "gaspard-team/"] + [f"teams/{t['slug']}/" for t in TEAMS] + [f"agents/{a['slug']}/" for a in AGENTS]
         sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         sm += "".join(f"  <url><loc>{base}/{p}</loc></url>\n" for p in paths) + "</urlset>\n"
         open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write(sm)
-        open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
+        open(os.path.join(OUT, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nDisallow: /agent-portal/\nSitemap: {base}/sitemap.xml\n")
     if PREVIEW:  # artifact entry page: body only
         s = open(os.path.join(OUT, "index.html"), encoding="utf-8").read()
         s = re.sub(r"^<!doctype html>.*?<head>\s*<meta charset=\"utf-8\">\s*<meta name=\"viewport\"[^>]*>\s*", "", s, flags=re.S)

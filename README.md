@@ -41,6 +41,17 @@ The forms on the Gaspard Team page (contact and home value) use Netlify Forms. S
 | `/about/` | About and contact |
 | `/search/` | Home search (coming soon until IDX is added) |
 | `/thanks/` | Shown after a form is sent |
+| `/agent-portal/` | Agents only: company forms behind a login (not in the menu) |
+
+## Agent portal (agents only)
+
+`/agent-portal/` lists company forms for agents. Each agent has their own username and password.
+
+- **Logins** are kept only in Netlify (**Site configuration → Environment variables → `AGENT_PORTAL_LOGINS`**), never in GitHub. The value is every login on one line, separated by spaces: `scott:password bill:password …`.
+- **Remove an agent:** delete their `name:password` pair from that value, save, then **Deploys → Trigger deploy → Deploy site**. Their login stops working when the deploy finishes.
+- **Add a form:** put the file in `portal-files/` and list it in `content/portal.json` (or send it to Claude).
+- If the logins variable is missing, the portal is left off the site entirely, so it is never public by accident.
+- Blank forms only. Signed agreements and anything with one agent's personal terms stay off the site.
 
 ## For developers
 
