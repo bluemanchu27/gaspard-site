@@ -35,20 +35,20 @@
     "source": "Zillow, as of October 2026.",
     "blocks": [
       {
-        "heading": "Priced right, sold fast",
-        "text": "We price your home off what's really selling nearby and get it market-ready, so it sells quickly and for the right number.",
-        "quote": "Both homes we have sold with him were under contract in less than 24-hours.",
-        "client": "H.B.",
-        "place": "Seller",
-        "year": ""
-      },
-      {
         "heading": "They know Baton Rouge, neighborhood by neighborhood",
         "text": "Which streets sell fast, what a price point buys in each part of town, and what's changing nearby. That comes from 3,000+ homes sold* across greater Baton Rouge.",
         "quote": "He knows Baton Rouge… knows his stuff when it comes to different neighborhoods.",
         "client": "A.M.E.",
         "place": "City Park",
         "year": "2025"
+      },
+      {
+        "heading": "Priced right, sold fast",
+        "text": "We price your home off what's really selling nearby and get it market-ready, so it sells quickly and for the right number.",
+        "quote": "Both homes we have sold with him were under contract in less than 24-hours.",
+        "client": "H.B.",
+        "place": "Seller",
+        "year": ""
       },
       {
         "heading": "You'll always hear back",
