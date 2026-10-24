@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Neighbors on Jones Creek Road | Gaspard &amp; Co Real Estate</title>
+<meta name="description" content="Gaspard &amp; Co Real Estate, a local office of experienced agents on Jones Creek Road in Baton Rouge. Call the office or find out what your home is worth.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="{{IMG}}/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap">
+<style>
+/* Company ad landing page (office-radius ad): office sketch, why us, all agents, reviews, visit, forms */
+:root{
+  --paper:#FFFFFF; --ink:#141414; --body:#353535; --muted:#6B6B68; --line:#E3E3DF; --tint:#F5F5F2;
+  --navy:#011E60; --red:#AD0908; --red-dark:#8E0706;
+  --serif:"Charis SIL", Charter, Georgia, serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);margin:0;line-height:1.12;text-wrap:balance}
+h2{font-size:clamp(30px,4vw,40px);margin-top:10px}
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:56px}
+.rule{border-top:1.5px solid var(--ink)}
+.lede{margin:12px 0 0;font-size:18px;max-width:52ch}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.top img{height:50px;width:auto}
+.top a.call-sm{font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--ink);padding:9px 14px;white-space:nowrap}
+
+.hero{display:grid;gap:28px;padding-block:28px 64px;align-items:center}
+.hero .sketch{width:100%;max-width:400px;height:auto;margin-inline:auto}
+.hero .copy{display:flex;flex-direction:column;gap:16px;min-width:0}
+.hero h1{font-size:clamp(40px,6.5vw,66px)}
+.hero p.sub{margin:0;font-size:19px;max-width:38ch}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:460px;padding-top:6px}
+.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:58px;text-decoration:none;font-weight:600;font-size:16px;padding:8px 12px;text-align:center;line-height:1.25}
+.btn small{font-weight:400;font-size:13px;opacity:.9}
+.btn.red{background:var(--red);color:#fff}.btn.red:hover{background:var(--red-dark)}
+.btn.line{border:1.5px solid var(--ink);color:var(--ink)}
+@media (min-width:860px){.hero{grid-template-columns:1fr 1.05fr;gap:56px;padding-block:48px 88px}.hero .sketch{max-width:none}}
+
+.why{display:grid;gap:28px 32px;margin-top:32px}
+@media (min-width:700px){.why{grid-template-columns:1fr 1fr}}
+.why-item{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.why-n{font-size:12px;font-weight:500;letter-spacing:.18em;color:var(--muted)}
+.why-item h3{font-size:24px}
+.why-item p{margin:0;font-size:16px;max-width:46ch}
+
+.agents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 12px;margin-top:32px}
+@media (min-width:640px){.agents{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:980px){.agents{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.person{text-decoration:none;display:flex;flex-direction:column;gap:4px;min-width:0}
+.person .ph{aspect-ratio:4/5;width:100%;overflow:hidden;background:var(--tint)}
+.person img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s ease}
+.person:hover img{transform:scale(1.03)}
+@media (prefers-reduced-motion: reduce){.person img{transition:none}}
+.person .nm{font-family:var(--serif);font-size:16px;color:var(--ink);padding-top:6px;line-height:1.25}
+.more{display:inline-flex;align-items:center;gap:12px;font-weight:500;text-decoration:none}
+.more::after{content:"";width:28px;height:1.5px;background:currentColor;transition:width .2s ease}
+.more:hover::after{width:40px}
+
+.reviews{display:grid;gap:28px;margin-top:32px}
+@media (min-width:860px){.reviews{grid-template-columns:repeat(3,minmax(0,1fr))}}
+blockquote{margin:0;padding-left:20px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0}
+blockquote p{margin:0;font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink)}
+blockquote footer{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+blockquote footer a{color:var(--muted);text-underline-offset:3px}
+
+.visit{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:24px;max-width:640px}
+.visit div{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);font-size:16px}
+.visit span:first-child{color:var(--muted)}
+.visit span:last-child{color:var(--ink);font-weight:500;text-align:right}
+
+.forms{background:var(--tint)}
+.forms .grid{display:grid;gap:40px;margin-top:28px}
+@media (min-width:860px){.forms .grid{grid-template-columns:1fr 1fr}}
+form{display:flex;flex-direction:column;gap:12px;min-width:0}
+form h3{font-size:26px}
+form p.sub{margin:0 0 4px;font-size:15px}
+label{font-size:13px;font-weight:500;color:var(--ink);display:flex;flex-direction:column;gap:6px}
+input,select,textarea{font:inherit;font-weight:400;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid #CFCFCA;padding:12px;width:100%;border-radius:0}
+textarea{min-height:90px;resize:vertical}
+button{font:inherit;font-weight:600;font-size:16px;background:var(--ink);color:#fff;border:0;min-height:52px;cursor:pointer}
+.err{font-size:13px;color:var(--red)}
+.hp{position:absolute;left:-9999px}
+
+footer.site{border-top:1px solid var(--line)}
+footer.site .wrap{padding-block:32px 40px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+footer.site img{height:60px;width:auto;align-self:flex-start}
+.fine{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap top"><a href="{{HOME}}"><img src="{{IMG}}/logo.svg" alt="Gaspard &amp; Co Real Estate" width="360" height="223"></a><a class="call-sm" href="tel:{{OFFICE_DIGITS}}">Call {{OFFICE}}</a></div>
+
+<main>
+<div class="wrap">
+  <section class="hero" aria-labelledby="h">
+    <img class="sketch" src="{{IMG}}/office-sketch.jpg" alt="Drawing of the Gaspard &amp; Co Real Estate office at 6624 Jones Creek Road, with its sign" width="949" height="924">
+    <div class="copy">
+      <span class="eyebrow">{{EYEBROW}}</span>
+      <h1 id="h">{{HEADLINE}}</h1>
+      <p class="sub">{{INTRO}}</p>
+      <div class="btns"><a class="btn red" href="tel:{{OFFICE_DIGITS}}">Talk to an agent<small>Call {{OFFICE}}</small></a><a class="btn line" href="#value">What's my home worth?</a></div>
+    </div>
+  </section>
+
+  <section class="rule" aria-labelledby="wy">
+    <span class="eyebrow">Why us</span>
+    <h2 id="wy">{{WHY_HEADING}}</h2>
+    <div class="why">{{WHY}}</div>
+  </section>
+
+  <section id="agents" class="rule" aria-labelledby="ag">
+    <span class="eyebrow">Our agents</span>
+    <h2 id="ag">{{AGENT_COUNT}} local agents, one office</h2>
+    <p class="lede">Find the one who fits you. Tap a photo to read their story and reach them directly.</p>
+    <div class="agents">{{AGENTS}}</div>
+  </section>
+
+  {{REVIEWS}}
+
+  <section id="visit" class="rule" aria-labelledby="vs">
+    <span class="eyebrow">Visit or call</span>
+    <h2 id="vs">Stop by the office</h2>
+    <div class="visit">
+      <div><span>Address</span><span><a href="{{MAP}}" target="_blank" rel="noopener">{{ADDRESS}}</a></span></div>
+      <div><span>Hours</span><span>{{HOURS}}</span></div>
+      <div><span>Phone</span><span><a href="tel:{{OFFICE_DIGITS}}">{{OFFICE}}</a></span></div>
+      <div><span>Email</span><span style="overflow-wrap:anywhere"><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></span></div>
+    </div>
+  </section>
+</div>
+
+<section class="forms" aria-labelledby="gt">
+  <div class="wrap">
+    <span class="eyebrow">Get in touch</span>
+    <h2 id="gt">Let's talk about your move</h2>
+    <div class="grid">
+      <form id="value" name="neighbors-home-value" method="POST" action="{{THANKS}}" data-netlify="true" netlify-honeypot="company" novalidate>
+        <input type="hidden" name="form-name" value="neighbors-home-value">
+        <input type="hidden" name="source" value="">
+        <label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>
+        <h3>What's my home worth?</h3>
+        <p class="sub">A free price estimate from a local agent, not an online guess.</p>
+        <label for="v-addr">Home address<input id="v-addr" name="address" autocomplete="street-address" placeholder="123 Oak St, Baton Rouge"></label>
+        <label for="v-name">Name<input id="v-name" name="name" autocomplete="name" placeholder="Jane Smith"></label>
+        <label for="v-phone">Phone<input id="v-phone" name="phone" type="tel" autocomplete="tel" placeholder="225-555-0123"></label>
+        <span class="err" id="v-err" hidden>Enter the address, your name and your phone number.</span>
+        <button type="submit">Get my home value</button>
+      </form>
+      <form id="contact" name="neighbors-contact" method="POST" action="{{THANKS}}" data-netlify="true" netlify-honeypot="company" novalidate>
+        <input type="hidden" name="form-name" value="neighbors-contact">
+        <input type="hidden" name="source" value="">
+        <label class="hp">Leave this empty<input name="company" tabindex="-1" autocomplete="off"></label>
+        <h3>Send us a note</h3>
+        <p class="sub">We'll call or text you back.</p>
+        <label for="c-name">Name<input id="c-name" name="name" autocomplete="name" placeholder="Jane Smith"></label>
+        <label for="c-phone">Phone<input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="225-555-0123"></label>
+        <label for="c-need">I'm looking to<select id="c-need" name="need"><option>Sell</option><option>Buy</option><option>Buy and sell</option><option>Just ask a question</option></select></label>
+        <label for="c-agent">Agent you'd like to work with<select id="c-agent" name="agent"><option>No preference, match me</option>{{AGENT_OPTIONS}}</select></label>
+        <label for="c-msg">Anything we should know?<textarea id="c-msg" name="message" placeholder="Timing, neighborhood, questions"></textarea></label>
+        <span class="err" id="c-err" hidden>Enter your name and phone number so we can reach you.</span>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <img src="{{IMG}}/logo.svg" alt="Gaspard &amp; Co Real Estate" width="360" height="223" loading="lazy">
+  <div>Gaspard &amp; Co Real Estate · {{ADDRESS}} · Office {{OFFICE}}</div>
+  <div class="fine" style="color:var(--body)">{{PARISHES}}</div>
+  <div class="fine">{{LEGAL}}. Licensed by the Louisiana Real Estate Commission, brokerage license {{LICENSE}}. Equal Housing Opportunity.</div>
+  <div class="fine"><a href="{{HOME}}" style="color:var(--muted)">Visit our full website</a></div>
+</div></footer>
+
+<script>
+(function(){
+  // Tag each lead with where it came from (for example ?utm_source=adwerx)
+  var src = "";
+  try { var q = new URLSearchParams(location.search); src = [q.get("utm_source"), q.get("utm_campaign")].filter(Boolean).join(" / "); } catch(e){}
+  document.querySelectorAll('input[name="source"]').forEach(function(i){ i.value = src || "direct"; });
+  function check(formId, fields, errId){
+    var f = document.getElementById(formId);
+    f.addEventListener('submit', function(e){
+      var ok = fields.every(function(id){ return document.getElementById(id).value.trim() !== ''; });
+      document.getElementById(errId).hidden = ok;
+      if (!ok) e.preventDefault();
+    });
+    fields.forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ document.getElementById(errId).hidden = true; }); });
+  }
+  check('contact', ['c-name','c-phone'], 'c-err');
+  check('value', ['v-addr','v-name','v-phone'], 'v-err');
+})();
+</script>
+</body>
+</html>

@@ -520,6 +520,58 @@ def landing_page():
     return tpl
 
 
+COMPANY_LANDING_PATH = os.path.join(CONTENT, "company-landing.json")
+COMPANY_LANDING = load(COMPANY_LANDING_PATH) if os.path.exists(COMPANY_LANDING_PATH) else None
+
+
+def company_landing_page():
+    """Company ad landing page (/neighbors/): office sketch, why us, every agent A-Z, one review per group, visit, forms to the office."""
+    C = COMPANY_LANDING
+    tpl = open(os.path.join(ROOT, "templates", "company.html"), encoding="utf-8").read()
+    why = "".join(f'<div class="why-item"><span class="why-n" aria-hidden="true">{i:02d}</span><h3>{esc(w["heading"])}</h3><p>{esc(w["text"])}</p></div>'
+                  for i, w in enumerate(C.get("why", []), 1))
+    agents = "".join(f'<a class="person" href="{page_url("agents/" + a["slug"])}"><span class="ph">'
+                     f'<img src="{img(a["photo"])}" alt="{esc(a["name"])}" loading="lazy" width="400" height="500"></span>'
+                     f'<span class="nm">{esc(a["name"])}</span></a>' for a in AGENTS)
+    quotes = ""
+    for slug in C.get("review_from", []):
+        a = BY_SLUG.get(slug)
+        r = next((r for r in (a or {}).get("reviews", []) if r.get("quote", "").strip()), None)
+        if not r:
+            continue
+        who = (esc(r["client"]) + " · " if r.get("client") else "") + f'Client of <a href="{page_url("agents/" + slug)}">{esc(a["name"])}</a>'
+        quotes += f'<blockquote><p>{esc(curly(r["quote"]))}</p><footer>{who}</footer></blockquote>'
+    reviews = (f'<section class="rule" aria-labelledby="rv"><span class="eyebrow">In our clients\' words</span>'
+               f'<h2 id="rv">What clients say</h2><div class="reviews">{quotes}</div></section>') if quotes else ""
+    parishes = parishes_sentence()
+    rep = {
+        "{{EYEBROW}}": esc(C.get("eyebrow", "")),
+        "{{HEADLINE}}": esc(C.get("headline", "")),
+        "{{INTRO}}": esc(C.get("intro", "")),
+        "{{WHY_HEADING}}": esc(C.get("why_heading", "")),
+        "{{WHY}}": why,
+        "{{AGENT_COUNT}}": str(len(AGENTS)),
+        "{{AGENTS}}": agents,
+        "{{AGENT_OPTIONS}}": "".join(f"<option>{esc(a['name'])}</option>" for a in AGENTS),
+        "{{REVIEWS}}": reviews,
+        "{{HOURS}}": esc(C.get("hours_text", "")),
+        "{{MAP}}": "https://www.google.com/maps/search/?api=1&amp;query=" + esc(FULL_ADDRESS.replace(",", "").replace(" ", "+")),
+        "{{EMAIL}}": esc(SITE["office_email"]),
+        "{{PARISHES}}": f"Serving {esc(parishes)} parishes, Louisiana." if parishes else "",
+        "{{IMG}}": img("/img/").rstrip("/"),
+        "{{THANKS}}": page_url("thanks"),
+        "{{OFFICE_DIGITS}}": digits(SITE["office_phone"]),
+        "{{OFFICE}}": OFFICE,
+        "{{ADDRESS}}": esc(FULL_ADDRESS),
+        "{{LEGAL}}": esc(SITE["legal_name"]),
+        "{{LICENSE}}": esc(SITE["brokerage_license"]),
+        "{{HOME}}": page_url(""),
+    }
+    for k, v in rep.items():
+        tpl = tpl.replace(k, v)
+    return tpl
+
+
 # ---------------------------------------------------------------- write
 def inline_assets(s):
     def rep(m):
@@ -586,6 +638,8 @@ def main():
     write("search/index.html", search_page())
     write("thanks/index.html", thanks_page())
     write("gaspard-team/index.html", landing_page())
+    if COMPANY_LANDING:  # company ad page; left out of the menu and sitemap on purpose
+        write("neighbors/index.html", company_landing_page())
     for t in TEAMS:
         write(f"teams/{t['slug']}/index.html", team_page(t))
     for a in AGENTS:
