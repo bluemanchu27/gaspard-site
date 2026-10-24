@@ -534,9 +534,9 @@ def company_landing_page():
                      f'<img src="{img(a["photo"])}" alt="{esc(a["name"])}" loading="lazy" width="400" height="500"></span>'
                      f'<span class="nm">{esc(a["name"])}</span></a>' for a in AGENTS)
     quotes = ""
-    for slug in C.get("review_from", []):
-        a = BY_SLUG.get(slug)
-        r = next((r for r in (a or {}).get("reviews", []) if r.get("quote", "").strip()), None)
+    for a in AGENTS:  # one review per agent who has one, A-Z, so no agent or team is featured over another
+        slug = a["slug"]
+        r = next((r for r in a.get("reviews", []) if r.get("quote", "").strip()), None)
         if not r:
             continue
         who = (esc(r["client"]) + " · " if r.get("client") else "") + f'Client of <a href="{page_url("agents/" + slug)}">{esc(a["name"])}</a>'
