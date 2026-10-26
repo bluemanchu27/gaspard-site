@@ -195,7 +195,14 @@ def footer():
             f'<div><strong style="font-weight:600;color:var(--ink)">Address</strong><span>{esc(FULL_ADDRESS)}</span></div></div>'
             + (f'<p class="fine" style="color:var(--body)">Serving {esc(parishes_sentence())} parishes, Louisiana.</p>' if SITE.get("service_areas") else '')
             + f'<p class="fine">{esc(SITE["legal_name"])}. Licensed by the Louisiana Real Estate Commission, brokerage license {esc(SITE["brokerage_license"])}. '
-            'Equal Housing Opportunity.</p></div></footer>\n')
+            'Equal Housing Opportunity.</p>'
+            + (f'<p class="fine"><a href="{page_url("agent-portal")}" rel="nofollow">Agent login</a></p>' if portal_live() else '')
+            + '</div></footer>\n')
+
+
+def portal_live():
+    """The footer's Agent login link shows only when the portal is actually on the site."""
+    return bool(PORTAL) and (PREVIEW or bool(PORTAL_LOGINS))
 
 
 def tail():
