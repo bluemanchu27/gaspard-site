@@ -421,6 +421,8 @@ def search_page():
 # ---------------------------------------------------------------- agent portal (members only)
 PORTAL_PATH = os.path.join(CONTENT, "portal.json")
 PORTAL = load(PORTAL_PATH) if os.path.exists(PORTAL_PATH) else None
+if PORTAL and not PORTAL.get("enabled", False):  # switched off: never publish the portal
+    PORTAL = None
 PORTAL_FILES = os.path.join(ROOT, "portal-files")
 # Logins live only in the Netlify environment variable AGENT_PORTAL_LOGINS, never in this repository.
 # Format: one "username:password" pair per agent, separated by spaces.
