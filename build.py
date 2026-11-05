@@ -569,8 +569,20 @@ def add_versions(s):
     return re.sub(r'((?:src|href)=")(/img/)([^"?/]+)"', rep, s)
 
 
+def google_tag(path, s):
+    """Google Analytics tag on every public page (not the agent portal, not previews)."""
+    gid = SITE.get("google_analytics_id", "").strip()
+    if not gid or PREVIEW or not path.endswith(".html") or path.startswith("agent-portal"):
+        return s
+    tag = (f'<!-- Google tag (gtag.js) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id={gid}"></script>\n'
+           "<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n"
+           f"  gtag('js', new Date());\n\n  gtag('config', '{gid}');\n</script>\n")
+    return s.replace("</head>", tag + "</head>", 1)
+
+
 def write(path, s):
     s = use_webp(s)
+    s = google_tag(path, s)
     if not PREVIEW:
         s = add_versions(s)
     if PREVIEW:
