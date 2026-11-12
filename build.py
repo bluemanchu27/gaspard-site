@@ -168,10 +168,11 @@ def agent_ld(a):
     return ld_script(p)
 
 
-def head(title, desc):
+def head(title, desc, canonical=""):
     return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
             f'<title>{title}</title>\n<meta name="description" content="{desc}">\n'
+            + (f'<link rel="canonical" href="{canonical}">\n' if canonical and not PREVIEW else '') +
             f'<link rel="icon" href="{img("/img/logo.svg")}">\n{FONTS}\n'
             f'<link rel="stylesheet" href="{url("style.css")}">\n</head>\n<body>\n')
 
@@ -312,7 +313,10 @@ def agents_page():
 
 def team_page(t):
     lead = next((a for a in t["members"] if a.get("team_lead")), None)
-    s = head(f"{esc(t['name'])} | {COMPANY}", f"{esc(t['name'])} at {COMPANY}.")
+    # The Gaspard Team's main page is the /gaspard-team/ landing page; this directory entry points search engines there.
+    main_page = LANDING_TEAM == t["slug"]
+    canonical = BASE + ("/gaspard-team/" if main_page else f"/teams/{t['slug']}/")
+    s = head(f"{esc(t['name'])} | {COMPANY}", f"{esc(t['name'])} at {COMPANY}.", canonical)
     s += header("agents")
     s += (f'<main><div class="wrap"><p class="back"><a class="arrow" href="{page_url("agents")}" style="font-size:14px">All agents</a></p>'
           f'<section class="block" style="padding-top:24px"><span class="eyebrow">Our teams</span>'
@@ -463,6 +467,32 @@ def thanks_page():
     return s + footer() + tail()
 
 
+LANDING_TEAM = "gaspard-team"
+
+
+def team_ld(team):
+    """Structured data for the Gaspard Team landing page: the team, its agents and the brokerage it belongs to."""
+    page = BASE + "/gaspard-team/"
+    street, _, rest = SITE["address"].partition(",")
+    parts = [x.strip() for x in rest.split(",")]
+    addr = {"@type": "PostalAddress", "streetAddress": street.strip(), "addressLocality": parts[0] if parts else "",
+            "addressRegion": parts[1] if len(parts) > 1 else "LA", "postalCode": SITE.get("postal_code", ""), "addressCountry": "US"}
+    members = [{"@type": "Person", "name": a["name"], "url": f"{BASE}/agents/{a['slug']}/",
+                "jobTitle": "REALTOR®, Team Lead" if a.get("team_lead") else "REALTOR®",
+                "image": BASE + (a.get("page_photo") or a["photo"]),
+                "worksFor": {"@id": ORG_ID}} for a in (team["members"] if team else [])]
+    data = {"@context": "https://schema.org", "@graph": [
+        {"@type": "RealEstateAgent", "@id": page + "#team", "name": team["name"] if team else "The Gaspard Team",
+         "url": page, "image": BASE + (team.get("photo") if team and team.get("photo") else "/img/gaspard-team.jpg"),
+         "description": f"The Gaspard Team at {SITE['company']} helps buyers and sellers in Baton Rouge, Denham Springs and the surrounding parishes.",
+         "telephone": "+1-" + LANDING["cell"], "address": addr, "areaServed": area_ld(),
+         "parentOrganization": {"@id": ORG_ID}, "employee": members,
+         "sameAs": [u for u in [LANDING.get("zillow_url", "")] + SITE.get("team_same_as", []) if u.strip()]},
+        {"@type": "WebPage", "@id": page + "#webpage", "url": page, "name": f"{team['name'] if team else 'The Gaspard Team'} | {SITE['company']}",
+         "about": {"@id": page + "#team"}, "isPartOf": {"@type": "WebSite", "url": BASE + "/", "name": SITE["company"]}}]}
+    return org_ld() + "\n" + ld_script(data)
+
+
 def landing_page():
     L = LANDING
     tpl = open(os.path.join(ROOT, "templates", "gaspard-team.html"), encoding="utf-8").read()
@@ -521,6 +551,7 @@ def landing_page():
         "{{LEGAL}}": esc(SITE["legal_name"]),
         "{{LICENSE}}": esc(SITE["brokerage_license"]),
         "{{HOME}}": page_url(""),
+        "{{HEADEXTRA}}": ("" if PREVIEW else f'<link rel="canonical" href="{BASE}/gaspard-team/">\n') + team_ld(team),
     }
     for k, v in rep.items():
         tpl = tpl.replace(k, v)
@@ -628,7 +659,7 @@ def main():
         print("Agent portal skipped: AGENT_PORTAL_LOGINS is not set in Netlify")
     if not PREVIEW:  # help search engines find every page
         base = SITE.get("site_url", "https://gaspardandcorealestate.com").rstrip("/")
-        paths = ["", "agents/", "about/", "search/", "gaspard-team/"] + [f"teams/{t['slug']}/" for t in TEAMS] + [f"agents/{a['slug']}/" for a in AGENTS]
+        paths = ["", "agents/", "about/", "search/", "gaspard-team/"] + [f"teams/{t['slug']}/" for t in TEAMS if t["slug"] != LANDING_TEAM] + [f"agents/{a['slug']}/" for a in AGENTS]
         sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         sm += "".join(f"  <url><loc>{base}/{p}</loc></url>\n" for p in paths) + "</urlset>\n"
         open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write(sm)
